@@ -41,14 +41,14 @@ export const Container = styled.div`
         background: ${darken(0.03, '#F94D6A')};
       }
 
-      div {
-        margin-left: 10px;
+      svg {
+        margin-right: 10px;
       }
     }
   }
 `;
 
-export const Meetup = styled.div`
+export const Meetup = styled.li`
   background: rgba(0, 0, 0, 0.1);
   padding: 20px 30px;
   border-radius: 4px;

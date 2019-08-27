@@ -28,7 +28,7 @@ export default function Dashboard() {
 
       setMeetups(data);
 
-      console.tron.log(response.data);
+      // console.tron.log(response.data);
     }
 
     loadMeetups();
@@ -40,26 +40,28 @@ export default function Dashboard() {
         <h1>Meus meetups</h1>
         <button type="submit">
           <MdAddCircleOutline size={20} color="#fff" />
-          <div>Novo meetup</div>
+          Novo meetup
         </button>
       </header>
 
-      {meetups.map(meetup => (
-        <Meetup key={meetup.id}>
-          <strong>{meetup.title}</strong>
-          <div>
-            <span>{meetup.dateFormatted}</span>
-            <Link
-              to={{
-                pathname: `/meetup/${meetup.id}`,
-                state: { meetup },
-              }}
-            >
-              <MdChevronRight size={24} color="#fff" />
-            </Link>
-          </div>
-        </Meetup>
-      ))}
+      <ul>
+        {meetups.map(meetup => (
+          <Meetup key={meetup.id}>
+            <strong>{meetup.title}</strong>
+            <div>
+              <span>{meetup.dateFormatted}</span>
+              <Link
+                to={{
+                  pathname: `/meetup/${meetup.id}`,
+                  state: { meetup },
+                }}
+              >
+                <MdChevronRight size={24} color="#fff" />
+              </Link>
+            </div>
+          </Meetup>
+        ))}
+      </ul>
     </Container>
   );
 }

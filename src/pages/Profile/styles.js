@@ -65,7 +65,7 @@ export const Container = styled.div`
           background: ${darken(0.03, '#F94D6A')};
         }
 
-        div {
+        svg {
           margin-right: 10px;
         }
       }

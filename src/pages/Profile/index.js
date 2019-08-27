@@ -12,7 +12,7 @@ export default function Profile() {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile);
 
-  console.tron.log(profile);
+  // console.tron.log(profile);
 
   function handleSubmit(data) {
     dispatch(updateProfileRequest(data));
@@ -40,9 +40,7 @@ export default function Profile() {
 
         <div>
           <button type="submit">
-            <div>
-              <MdAddCircleOutline size={20} color="#fff" />
-            </div>
+            <MdAddCircleOutline size={20} color="#fff" />
             Salvar perfil
           </button>
         </div>
