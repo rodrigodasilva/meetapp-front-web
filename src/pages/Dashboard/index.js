@@ -13,7 +13,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function loadMeetups() {
-      const response = await api.get('meetups');
+      const response = await api.get('organizing');
 
       const data = response.data.map(meetup => ({
         ...meetup,
@@ -27,8 +27,6 @@ export default function Dashboard() {
       }));
 
       setMeetups(data);
-
-      // console.tron.log(response.data);
     }
 
     loadMeetups();
@@ -38,10 +36,12 @@ export default function Dashboard() {
     <Container>
       <header>
         <h1>Meus meetups</h1>
-        <button type="submit">
-          <MdAddCircleOutline size={20} color="#fff" />
-          Novo meetup
-        </button>
+        <Link to="/meetup">
+          <button type="submit">
+            <MdAddCircleOutline size={20} color="#fff" />
+            Novo meetup
+          </button>
+        </Link>
       </header>
 
       <ul>

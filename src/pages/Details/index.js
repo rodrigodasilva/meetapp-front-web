@@ -7,15 +7,22 @@ import { MdDateRange, MdLocationOn, MdEdit, MdCancel } from 'react-icons/md';
 import { Container, Button } from './styles';
 
 function Details({ location }) {
-  // const { meetup } = location.state;
+  const { meetup } = location.state;
+
+  console.tron.log(meetup);
 
   return (
     <Container>
       <header>
-        <h1>Titulo</h1>
+        <h1>{meetup.title}</h1>
 
         <div>
-          <Link to="/edit">
+          <Link
+            to={{
+              pathname: `/edit/${meetup.id}`,
+              state: { meetup },
+            }}
+          >
             <Button type="button" primary>
               <MdEdit size={20} color="#fff" />
               Editar
@@ -30,26 +37,18 @@ function Details({ location }) {
         </div>
       </header>
 
-      <img
-        src="https://www.bahiacomenta.com.br/wp-content/uploads/2018/04/banner1.jpg"
-        alt="Banner"
-      />
+      <img src={meetup.file.url} alt="Banner" />
 
-      <span>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem eveniet
-        ipsa animi doloremque consequuntur ea beatae et cumque quis sapiente
-        fugiat distinctio, eaque perspiciatis maiores modi dicta nostrum, ullam
-        consequatur.
-      </span>
+      <span>{meetup.description}</span>
 
       <footer>
         <time>
-          <MdDateRange size={20} color="rgba(255, 255, 255, 0.6)" /> 25 de junho
-          de 2019
+          <MdDateRange size={20} color="rgba(255, 255, 255, 0.6)" />{' '}
+          {meetup.dateFormatted}
         </time>
         <address>
           <MdLocationOn size={20} color="rgba(255, 255, 255, 0.6)" />
-          Parque Savoy City, SP
+          {meetup.location}
         </address>
       </footer>
     </Container>

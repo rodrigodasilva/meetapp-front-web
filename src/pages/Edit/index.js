@@ -1,26 +1,31 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Form, Input } from '@rocketseat/unform';
-
-import { MdAddCircleOutline } from 'react-icons/md';
-
-import { createMeetupRequest } from '~/store/modules/meetup/actions';
+import { parseISO } from 'date-fns';
+import { MdPhotoCamera, MdAddCircleOutline } from 'react-icons/md';
 
 import BannerInput from '~/components/BannerInput';
+import { updateMeetupRequest } from '~/store/modules/meetup/actions';
 
 import { Container, Button } from './styles';
 
-export default function New() {
+export default function Edit({ location }) {
+  const { meetup } = location.state;
+  console.tron.log('meetup', meetup);
+
   const dispatch = useDispatch();
 
+  const loading = useSelector(state => state.meetup.loading);
+
   function handleSubmit(data) {
-    dispatch(createMeetupRequest(data));
+    dispatch(updateMeetupRequest(meetup.id, data));
   }
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
-        <BannerInput name="banner_id" />
+      <Form initialData={{ ...meetup, date: parseISO(meetup.date) }}>
+        <BannerInput name="file_id" />
 
         <Input name="title" type="text" placeholder="Título do Meetup" />
         <Input
