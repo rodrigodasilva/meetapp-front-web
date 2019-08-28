@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form, Input } from '@rocketseat/unform';
 import { parseISO } from 'date-fns';
 import { MdAddCircleOutline } from 'react-icons/md';
+import { Spinner } from 'react-activity';
 
 import BannerInput from '~/components/BannerInput';
 import DatePicker from '~/components/DatePicker';
@@ -12,16 +13,13 @@ import { updateMeetupRequest } from '~/store/modules/meetup/actions';
 
 import { Container, Button } from './styles';
 
-// function Edit({ location }) {
 function Edit() {
   const meetup = useSelector(state => state.meetup.data);
-  const dispatch = useDispatch();
-  console.tron.log('edit', meetup);
-  // const meetup = loadMeetupFromRedux || location.state.meetup;
-
-  // const { meetup } = location.state;
-
   const loading = useSelector(state => state.meetup.loading);
+
+  const dispatch = useDispatch();
+
+  // console.tron.log('edit', meetup);
 
   function handleSubmit(data) {
     dispatch(updateMeetupRequest(meetup.id, data));
@@ -41,8 +39,14 @@ function Edit() {
         <Input name="location" type="text" placeholder="Localização" />
         <div>
           <Button type="submit">
-            <MdAddCircleOutline size={20} color="#fff" />
-            Salvar Meetup
+            {loading ? (
+              <Spinner color="#fff" size={14} />
+            ) : (
+              <>
+                <MdAddCircleOutline size={20} color="#fff" />
+                Salvar Meetup
+              </>
+            )}
           </Button>
         </div>
       </Form>

@@ -13,8 +13,6 @@ function Details({ location }) {
 
   const dispatch = useDispatch();
 
-  // console.tron.log(meetup);
-
   function handleSubmit() {
     dispatch(MeetupRequest(meetup));
   }

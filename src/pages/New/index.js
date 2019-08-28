@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
-
 import { MdAddCircleOutline } from 'react-icons/md';
+import { Spinner } from 'react-activity';
 
 import { createMeetupRequest } from '~/store/modules/meetup/actions';
 
@@ -11,6 +11,7 @@ import BannerInput from '~/components/BannerInput';
 import { Container, Button } from './styles';
 
 export default function New() {
+  const loading = useSelector(state => state.meetup.loading);
   const dispatch = useDispatch();
 
   function handleSubmit(data) {
@@ -29,8 +30,14 @@ export default function New() {
 
         <div>
           <Button type="submit">
-            <MdAddCircleOutline size={20} color="#fff" />
-            Salvar Meetup
+            {loading ? (
+              <Spinner color="#fff" size={14} />
+            ) : (
+              <>
+                <MdAddCircleOutline size={20} color="#fff" />
+                Salvar Meetup
+              </>
+            )}
           </Button>
         </div>
       </Form>

@@ -1,10 +1,16 @@
 export function MeetupRequest(data) {
-  console.tron.log('actionMeetup', data);
+  // console.tron.log('actionMeetup', data);
   return {
     type: '@meetup/MEETUP_REQUEST',
     payload: { data },
   };
 }
+
+// export function Redirect() {
+//   return {
+//     type: '@meetup/REDIRECT',
+//   };
+// }
 
 export function createMeetupRequest(data) {
   return {

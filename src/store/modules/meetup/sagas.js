@@ -13,7 +13,6 @@ import {
 
 export function requestMeetup({ payload }) {
   // console.tron.log(payload.data);
-
   history.push(`/edit/${payload.data.id}`);
 }
 
@@ -34,6 +33,9 @@ export function* createMeetup({ payload }) {
 
 export function* updateMeetup({ payload }) {
   const { id, data } = payload;
+  if (!payload) {
+    history.push('/');
+  }
   // console.tron.log('updateMeetup', id, data);
 
   try {
@@ -49,8 +51,13 @@ export function* updateMeetup({ payload }) {
   }
 }
 
+// export function Redirect() {
+//   history.push('/');
+// }
+
 export default all([
   takeLatest('@meetup/MEETUP_REQUEST', requestMeetup),
+  // takeLatest('@meetup/REDIRECT', Redirect),
   takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
   takeLatest('@meetup/UPDATE_MEETUP_REQUEST', updateMeetup),
 ]);

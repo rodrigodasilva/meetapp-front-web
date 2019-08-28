@@ -14,10 +14,15 @@ function meetup(state = INITIAL_STATE, action) {
       }
 
       case '@meetup/MEETUP_REQUEST': {
-        console.tron.log('reducerMeetup', action);
         draft.data = action.payload.data;
         break;
       }
+
+      // case '@meetup/REDIRECT': {
+      //   // console.tron.log('reducerMeetup', action);
+      //   draft.data = null;
+      //   break;
+      // }
 
       case '@meetup/CREATE_MEETUP_REQUEST': {
         draft.loading = true;
