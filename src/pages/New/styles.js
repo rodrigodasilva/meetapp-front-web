@@ -36,6 +36,10 @@ export const Container = styled.div`
       display: flex;
       justify-content: flex-end;
     }
+
+    .react-datepicker__input-container {
+      width: 100%;
+    }
   }
 `;
 
