@@ -28,7 +28,10 @@ export default function DatePickerMeetup({ name, placeholder }) {
         selected={selected}
         onChange={date => setSelected(date)}
         ref={ref}
+        dateFormat="dd 'de' MMMM 'de' yyyy, HH:mm'h'"
+        minDate={new Date()}
         showTimeSelect
+        timeCaption="Hora"
         timeFormat="HH:mm"
         timeIntervals={60}
         placeholderText={placeholder}

@@ -34,8 +34,8 @@ function Edit() {
         <BannerInput name="banner_id" />
         <Input name="title" type="text" placeholder="Título do Meetup" />
         <Input name="description" placeholder="Descrição completa" multiline />
-        {/* <DatePicker name="date" placeholder="Data do meetup" /> */}
-        <Input name="date" type="text" placeholder="Data do Meetup" />
+        <DatePicker name="date" placeholder="Data do meetup" />
+        {/* <Input name="date" type="text" placeholder="Data do Meetup" /> */}
         <Input name="location" type="text" placeholder="Localização" />
         <div>
           <Button type="submit">

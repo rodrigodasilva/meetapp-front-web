@@ -32,11 +32,6 @@ export const Container = styled.div`
       padding: 15px;
     }
 
-    div {
-      display: flex;
-      justify-content: flex-end;
-    }
-
     .react-datepicker__input-container {
       width: 100%;
     }
