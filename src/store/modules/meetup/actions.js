@@ -1,3 +1,11 @@
+export function MeetupRequest(data) {
+  console.tron.log('actionMeetup', data);
+  return {
+    type: '@meetup/MEETUP_REQUEST',
+    payload: { data },
+  };
+}
+
 export function createMeetupRequest(data) {
   return {
     type: '@meetup/CREATE_MEETUP_REQUEST',
@@ -24,9 +32,10 @@ export function updateMeetupRequest(id, data) {
   };
 }
 
-export function updateMeetupSuccess() {
+export function updateMeetupSuccess(data) {
   return {
     type: '@meetup/UPDATE_MEETUP_SUCCESS',
+    payload: { data },
   };
 }
 

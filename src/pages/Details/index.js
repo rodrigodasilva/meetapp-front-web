@@ -1,15 +1,23 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import { MdDateRange, MdLocationOn, MdEdit, MdCancel } from 'react-icons/md';
+
+import { MeetupRequest } from '~/store/modules/meetup/actions';
 
 import { Container, Button } from './styles';
 
 function Details({ location }) {
   const { meetup } = location.state;
 
-  console.tron.log(meetup);
+  const dispatch = useDispatch();
+
+  // console.tron.log(meetup);
+
+  function handleSubmit() {
+    dispatch(MeetupRequest(meetup));
+  }
 
   return (
     <Container>
@@ -17,17 +25,17 @@ function Details({ location }) {
         <h1>{meetup.title}</h1>
 
         <div>
-          <Link
+          {/* <Link
             to={{
               pathname: `/edit/${meetup.id}`,
               state: { meetup },
             }}
-          >
-            <Button type="button" primary>
-              <MdEdit size={20} color="#fff" />
-              Editar
-            </Button>
-          </Link>
+          > */}
+          <Button type="button" primary onClick={handleSubmit}>
+            <MdEdit size={20} color="#fff" />
+            Editar
+          </Button>
+          {/* </Link> */}
           <Link to="/">
             <Button type="button">
               <MdCancel size={20} color="#fff" />

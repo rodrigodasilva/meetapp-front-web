@@ -1,6 +1,7 @@
 import { all, put, call, takeLatest } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
+import history from '~/services/history';
 import api from '~/services/api';
 
 import {
@@ -10,9 +11,15 @@ import {
   updateMeetupFailure,
 } from '~/store/modules/meetup/actions';
 
+export function requestMeetup({ payload }) {
+  // console.tron.log(payload.data);
+
+  history.push(`/edit/${payload.data.id}`);
+}
+
 export function* createMeetup({ payload }) {
   try {
-    console.tron.log(payload.data);
+    // console.tron.log(payload.data);
     yield call(api.post, 'meetups', payload.data);
 
     toast.success('Meetup criado com sucesso');
@@ -27,14 +34,14 @@ export function* createMeetup({ payload }) {
 
 export function* updateMeetup({ payload }) {
   const { id, data } = payload;
-  console.tron.log('updateMeetup', id, data);
+  // console.tron.log('updateMeetup', id, data);
 
   try {
     yield call(api.put, `meetups/${id}`, data);
 
     toast.success('Meetup atualizado com sucesso');
 
-    yield put(updateMeetupSuccess());
+    yield put(updateMeetupSuccess(data));
   } catch (err) {
     toast.error('Erro ao atualizar meetup, confira os dados informados');
 
@@ -43,6 +50,7 @@ export function* updateMeetup({ payload }) {
 }
 
 export default all([
+  takeLatest('@meetup/MEETUP_REQUEST', requestMeetup),
   takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
   takeLatest('@meetup/UPDATE_MEETUP_REQUEST', updateMeetup),
 ]);
