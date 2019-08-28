@@ -12,6 +12,7 @@ import {
 
 export function* createMeetup({ payload }) {
   try {
+    console.tron.log(payload.data);
     yield call(api.post, 'meetups', payload.data);
 
     toast.success('Meetup criado com sucesso');

@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
 
-import api from '~/services/api';
+import { MdPhotoCamera } from 'react-icons/md';
 
-// MdPhotoCamera
+import api from '~/services/api';
 
 import { Container } from './styles';
 
@@ -41,12 +41,14 @@ function BannerInput() {
   return (
     <Container>
       <label htmlFor="banner">
-        <img
-          src={
-            preview || 'https://api.adorable.io/avatars/100/abott@adorable.png'
-          }
-          alt=""
-        />
+        {preview ? (
+          <img src={preview} alt="" />
+        ) : (
+          <div>
+            <MdPhotoCamera size={54} color="rgba(255, 255, 255, 0.3)" />
+            <strong>Selecionar imagem</strong>
+          </div>
+        )}
 
         <input
           type="file"

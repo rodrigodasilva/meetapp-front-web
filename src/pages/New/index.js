@@ -23,11 +23,7 @@ export default function New() {
         <BannerInput name="banner_id" />
 
         <Input name="title" type="text" placeholder="Título do Meetup" />
-        <Input
-          name="description"
-          type="text"
-          placeholder="Descrição completa"
-        />
+        <Input name="description" placeholder="Descrição completa" multiline />
         <Input name="date" type="text" placeholder="Data do Meetup" />
         <Input name="location" type="text" placeholder="Localização" />
 

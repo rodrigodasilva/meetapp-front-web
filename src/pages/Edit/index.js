@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form, Input } from '@rocketseat/unform';
 import { parseISO } from 'date-fns';
-import { MdPhotoCamera, MdAddCircleOutline } from 'react-icons/md';
+import { MdAddCircleOutline } from 'react-icons/md';
 
 import BannerInput from '~/components/BannerInput';
 import { updateMeetupRequest } from '~/store/modules/meetup/actions';
 
 import { Container, Button } from './styles';
 
-export default function Edit({ location }) {
+function Edit({ location }) {
   const { meetup } = location.state;
   console.tron.log('meetup', meetup);
 
@@ -24,15 +24,14 @@ export default function Edit({ location }) {
 
   return (
     <Container>
-      <Form initialData={{ ...meetup, date: parseISO(meetup.date) }}>
-        <BannerInput name="file_id" />
+      <Form
+        onSubmit={handleSubmit}
+        initialData={{ ...meetup, date: parseISO(meetup.date) }}
+      >
+        <BannerInput name="banner_id" />
 
         <Input name="title" type="text" placeholder="Título do Meetup" />
-        <Input
-          name="description"
-          type="text"
-          placeholder="Descrição completa"
-        />
+        <Input name="description" placeholder="Descrição completa" multiline />
         <Input name="date" type="text" placeholder="Data do Meetup" />
         <Input name="location" type="text" placeholder="Localização" />
 
@@ -46,3 +45,22 @@ export default function Edit({ location }) {
     </Container>
   );
 }
+
+Edit.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      meetup: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        description: PropTypes.string,
+        location: PropTypes.string,
+        file: PropTypes.shape({
+          url: PropTypes.string,
+        }),
+        dateFormatted: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
+};
+
+export default Edit;

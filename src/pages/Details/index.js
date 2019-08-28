@@ -37,7 +37,7 @@ function Details({ location }) {
         </div>
       </header>
 
-      <img src={meetup.file.url} alt="Banner" />
+      <img src={meetup.banner.url} alt="Banner" />
 
       <span>{meetup.description}</span>
 
