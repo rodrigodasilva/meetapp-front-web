@@ -13,11 +13,11 @@ import DatePickerMeetup from '~/components/DatePicker';
 import { Container, Button } from './styles';
 
 const schema = Yup.object().shape({
-  banner_id: Yup.number().required('You must set a banner for the meetup.'),
-  title: Yup.string().required('Title is a required field.'),
-  description: Yup.string().required('Description is a required field.'),
-  date: Yup.date('Date must be valid.').required('Date is a required field.'),
-  location: Yup.string().required('Location is a required field.'),
+  banner_id: Yup.string().required('Insira uma imagem para o meetup'),
+  title: Yup.string().required('Insira um título'),
+  description: Yup.string().required('Insira uma descrição'),
+  date: Yup.date('Insira uma data válida').required('Insira uma data'),
+  location: Yup.string().required('Insira um local'),
 });
 
 export default function New() {
