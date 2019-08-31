@@ -8,26 +8,16 @@ const INITIAL_STATE = {
 function meetup(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case '@auth/SIGN_OUT': {
-        draft.meetup = null;
-        break;
-      }
-
-      case '@meetup/MEETUP_REQUEST': {
-        draft.data = action.payload.data;
-        break;
-      }
-
-      // case '@meetup/REDIRECT': {
-      //   // console.tron.log('reducerMeetup', action);
-      //   draft.data = null;
-      //   break;
-      // }
+      //       case '@auth/SIGN_OUT': {
+      //         draft.meetup = null;
+      //         break;
+      //       }
 
       case '@meetup/CREATE_MEETUP_REQUEST': {
         draft.loading = true;
         break;
       }
+
       case '@meetup/CREATE_MEETUP_SUCCESS': {
         draft.loading = false;
         break;
@@ -44,10 +34,10 @@ function meetup(state = INITIAL_STATE, action) {
         draft.loading = false;
         break;
       }
-      case '@meetup/UPDATE_MEETUP_FAILURE': {
-        draft.loading = false;
-        break;
-      }
+      //       case '@meetup/UPDATE_MEETUP_FAILURE': {
+      //         draft.loading = false;
+      //         break;
+      //       }
       default:
     }
   });

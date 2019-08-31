@@ -1,17 +1,3 @@
-export function MeetupRequest(data) {
-  // console.tron.log('actionMeetup', data);
-  return {
-    type: '@meetup/MEETUP_REQUEST',
-    payload: { data },
-  };
-}
-
-// export function Redirect() {
-//   return {
-//     type: '@meetup/REDIRECT',
-//   };
-// }
-
 export function createMeetupRequest(data) {
   return {
     type: '@meetup/CREATE_MEETUP_REQUEST',
@@ -25,11 +11,11 @@ export function createMeetupSuccess() {
   };
 }
 
-export function createMeetupFailure() {
-  return {
-    type: '@meetup/CREATE_MEETUP_FAILURE',
-  };
-}
+// export function createMeetupFailure() {
+//   return {
+//     type: '@meetup/CREATE_MEETUP_FAILURE',
+//   };
+// }
 
 export function updateMeetupRequest(id, data) {
   return {

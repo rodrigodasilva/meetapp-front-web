@@ -11,10 +11,10 @@ import {
   updateMeetupFailure,
 } from '~/store/modules/meetup/actions';
 
-export function requestMeetup({ payload }) {
-  // console.tron.log(payload.data);
-  history.push(`/edit/${payload.data.id}`);
-}
+// export function requestMeetup({ payload }) {
+//   // console.tron.log(payload.data);
+//   history.push(`/edit/${payload.data.id}`);
+// }
 
 export function* createMeetup({ payload }) {
   try {
@@ -27,23 +27,19 @@ export function* createMeetup({ payload }) {
   } catch (err) {
     toast.error('Erro ao criar meetup, confira os dados informados');
 
-    yield put(createMeetupFailure());
+    // yield put(createMeetupFailure());
   }
 }
 
 export function* updateMeetup({ payload }) {
   const { id, data } = payload;
-  if (!payload) {
-    history.push('/');
-  }
-  // console.tron.log('updateMeetup', id, data);
 
   try {
     yield call(api.put, `meetups/${id}`, data);
-
-    toast.success('Meetup atualizado com sucesso');
+    // history.push('/');
 
     yield put(updateMeetupSuccess(data));
+    toast.success('Meetup atualizado com sucesso');
   } catch (err) {
     toast.error('Erro ao atualizar meetup, confira os dados informados');
 
@@ -51,13 +47,13 @@ export function* updateMeetup({ payload }) {
   }
 }
 
-// export function Redirect() {
-//   history.push('/');
-// }
+// // export function Redirect() {
+// //   history.push('/');
+// // }
 
 export default all([
-  takeLatest('@meetup/MEETUP_REQUEST', requestMeetup),
-  // takeLatest('@meetup/REDIRECT', Redirect),
+  //   takeLatest('@meetup/MEETUP_REQUEST', requestMeetup),
+  //   // takeLatest('@meetup/REDIRECT', Redirect),
   takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
   takeLatest('@meetup/UPDATE_MEETUP_REQUEST', updateMeetup),
 ]);

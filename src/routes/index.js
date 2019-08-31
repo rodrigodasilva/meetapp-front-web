@@ -9,8 +9,7 @@ import Dashboard from '~/pages/Dashboard';
 import Profile from '~/pages/Profile';
 
 import Details from '~/pages/Details';
-import Edit from '~/pages/Edit';
-import New from '~/pages/New';
+import FormMeetup from '~/pages/FormMeetup';
 
 export default function Routes() {
   return (
@@ -21,9 +20,9 @@ export default function Routes() {
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
 
-      <Route path="/meetup/:id" component={Details} isPrivate />
-      <Route path="/edit/:id" component={Edit} isPrivate />
-      <Route path="/meetup" component={New} isPrivate />
+      <Route path="/details/:id" component={Details} isPrivate />
+      <Route path="/new" component={FormMeetup} isPrivate />
+      <Route path="/edit/:id" component={FormMeetup} isPrivate />
     </Switch>
   );
 }

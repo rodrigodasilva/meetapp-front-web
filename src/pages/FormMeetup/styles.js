@@ -18,7 +18,7 @@ export const Container = styled.div`
       height: 50px;
       padding: 0 15px;
       color: #fff;
-      margin: 0 0 10px;
+      margin: 10px 0 0px;
       font-size: 18px;
 
       &::placeholder {
@@ -32,11 +32,25 @@ export const Container = styled.div`
       padding: 15px;
     }
 
+    span {
+      font: 16px 'Roboto', sans-serif;
+      color: #ef2c2cc7;
+      padding-left: 15px;
+      margin: 2px 0 5px;
+    }
+
+    .divButtonSave {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
     .react-datepicker__input-container {
       width: 100%;
     }
 
     .react-datepicker {
+      padding: 1px;
       border: 2px solid #d44459;
       box-shadow: 12px 15px 20px rgba(0, 0, 0, 0.05);
     }

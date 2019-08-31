@@ -36,8 +36,8 @@ export default function Dashboard() {
     <Container>
       <header>
         <h1>Meus meetups</h1>
-        <Link to="/meetup">
-          <button type="submit">
+        <Link to="/new">
+          <button type="button">
             <MdAddCircleOutline size={20} color="#fff" />
             Novo meetup
           </button>
@@ -48,14 +48,10 @@ export default function Dashboard() {
         {meetups.map(meetup => (
           <Meetup key={meetup.id}>
             <strong>{meetup.title}</strong>
+
             <div>
               <span>{meetup.dateFormatted}</span>
-              <Link
-                to={{
-                  pathname: `/meetup/${meetup.id}`,
-                  state: { meetup },
-                }}
-              >
+              <Link to={`/details/${meetup.id}`}>
                 <MdChevronRight size={24} color="#fff" />
               </Link>
             </div>

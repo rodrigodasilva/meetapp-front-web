@@ -1,21 +1,59 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { parseISO, format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { MdDateRange, MdLocationOn, MdEdit, MdCancel } from 'react-icons/md';
-
-import { MeetupRequest } from '~/store/modules/meetup/actions';
 
 import { Container, Button } from './styles';
 
-function Details({ location }) {
-  const { meetup } = location.state;
+import api from '~/services/api';
 
-  const dispatch = useDispatch();
+function Details({ match }) {
+  const { id } = match.params;
 
-  function handleSubmit() {
-    dispatch(MeetupRequest(meetup));
-  }
+  // const [loading, setLoading] = useState(true);
+  const [meetup, setMeetup] = useState([]);
+
+  /**
+   * Tive que setar a imagem separadamente pois, por algum
+   * motivo não tava conseguindo acessar os dados do banner
+   */
+  const [image, setImage] = useState('');
+
+  useEffect(() => {
+    async function loadMeetups() {
+      const response = await api.get(`meetups/${id}`);
+
+      const { data } = response;
+      setImage(data.banner.url);
+
+      setMeetup({
+        ...data,
+        dateFormatted: format(
+          parseISO(data.date),
+          "dd ' de ' MMMM ', às ' HH:mm'h'",
+          {
+            locale: pt,
+          }
+        ),
+      });
+    }
+
+    loadMeetups();
+  }, [id]);
+
+  // async function handleCancel(meetupId) {
+  //   try {
+  //     await api.delete(`/meetups/${meetupId}`);
+
+  //     toast.success('Meetup cancelado');
+
+  //     history.push('/dashboard');
+  //   } catch (err) {
+  //     toast.error('Erro. Tente novamento.');
+  //   }
+  // }
 
   return (
     <Container>
@@ -23,17 +61,13 @@ function Details({ location }) {
         <h1>{meetup.title}</h1>
 
         <div>
-          {/* <Link
-            to={{
-              pathname: `/edit/${meetup.id}`,
-              state: { meetup },
-            }}
-          > */}
-          <Button type="button" primary onClick={handleSubmit}>
-            <MdEdit size={20} color="#fff" />
-            Editar
-          </Button>
-          {/* </Link> */}
+          <Link to={`/edit/${meetup.id}`}>
+            <Button type="button" primary>
+              <MdEdit size={20} color="#fff" />
+              Editar
+            </Button>
+          </Link>
+
           <Link to="/">
             <Button type="button">
               <MdCancel size={20} color="#fff" />
@@ -43,8 +77,7 @@ function Details({ location }) {
         </div>
       </header>
 
-      <img src={meetup.banner.url} alt="Banner" />
-
+      <img src={image} alt="Banner" />
       <span>{meetup.description}</span>
 
       <footer>
@@ -61,21 +94,21 @@ function Details({ location }) {
   );
 }
 
-Details.propTypes = {
-  location: PropTypes.shape({
-    state: PropTypes.shape({
-      meetup: PropTypes.shape({
-        id: PropTypes.number,
-        title: PropTypes.string,
-        description: PropTypes.string,
-        location: PropTypes.string,
-        file: PropTypes.shape({
-          url: PropTypes.string,
-        }),
-        dateFormatted: PropTypes.string,
-      }),
-    }),
-  }).isRequired,
-};
+// Details.propTypes = {
+//   location: PropTypes.shape({
+//     state: PropTypes.shape({
+//       meetup: PropTypes.shape({
+//         id: PropTypes.number,
+//         title: PropTypes.string,
+//         description: PropTypes.string,
+//         location: PropTypes.string,
+//         file: PropTypes.shape({
+//           url: PropTypes.string,
+//         }),
+//         dateFormatted: PropTypes.string,
+//       }),
+//     }),
+//   }).isRequired,
+// };
 
 export default Details;
