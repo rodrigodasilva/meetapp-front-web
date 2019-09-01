@@ -1,7 +1,14 @@
-export function createMeetupRequest(data) {
+export function requestDetailsMeetup(meetup) {
+  return {
+    type: '@meetup/REQUEST_DETAILS_MEETUP',
+    payload: { meetup },
+  };
+}
+
+export function createMeetupRequest(meetup) {
   return {
     type: '@meetup/CREATE_MEETUP_REQUEST',
-    payload: { data },
+    payload: { meetup },
   };
 }
 
@@ -11,11 +18,11 @@ export function createMeetupSuccess() {
   };
 }
 
-// export function createMeetupFailure() {
-//   return {
-//     type: '@meetup/CREATE_MEETUP_FAILURE',
-//   };
-// }
+export function createMeetupFailure() {
+  return {
+    type: '@meetup/CREATE_MEETUP_FAILURE',
+  };
+}
 
 export function updateMeetupRequest(id, data) {
   return {
@@ -24,15 +31,21 @@ export function updateMeetupRequest(id, data) {
   };
 }
 
-export function updateMeetupSuccess(data) {
+export function updateMeetupSuccess(meetup) {
   return {
     type: '@meetup/UPDATE_MEETUP_SUCCESS',
-    payload: { data },
+    payload: { meetup },
   };
 }
 
 export function updateMeetupFailure() {
   return {
     type: '@meetup/UPDATE_MEETUP_FAILURE',
+  };
+}
+
+export function clearMeetup() {
+  return {
+    type: '@meetup/CLEAR_MEETUP',
   };
 }

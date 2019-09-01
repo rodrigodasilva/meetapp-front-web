@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { parseISO, format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { Link } from 'react-router-dom';
@@ -7,53 +8,16 @@ import { MdDateRange, MdLocationOn, MdEdit, MdCancel } from 'react-icons/md';
 
 import { Container, Button } from './styles';
 
-import api from '~/services/api';
+import history from '~/services/history';
 
 function Details({ match }) {
-  const { id } = match.params;
+  // const idParamPage = Number(match.params.id);
 
-  // const [loading, setLoading] = useState(true);
-  const [meetup, setMeetup] = useState([]);
+  const meetup = useSelector(state => state.meetup.meetup);
 
-  /**
-   * Tive que setar a imagem separadamente pois, por algum
-   * motivo não tava conseguindo acessar os dados do banner
-   */
-  const [image, setImage] = useState('');
-
-  useEffect(() => {
-    async function loadMeetups() {
-      const response = await api.get(`meetups/${id}`);
-
-      const { data } = response;
-      setImage(data.banner.url);
-
-      setMeetup({
-        ...data,
-        dateFormatted: format(
-          parseISO(data.date),
-          "dd ' de ' MMMM ', às ' HH:mm'h'",
-          {
-            locale: pt,
-          }
-        ),
-      });
-    }
-
-    loadMeetups();
-  }, [id]);
-
-  // async function handleCancel(meetupId) {
-  //   try {
-  //     await api.delete(`/meetups/${meetupId}`);
-
-  //     toast.success('Meetup cancelado');
-
-  //     history.push('/dashboard');
-  //   } catch (err) {
-  //     toast.error('Erro. Tente novamento.');
-  //   }
-  // }
+  // useEffect(() => {
+  //   if (idParamPage !== meetup.id) history.push('/');
+  // }, [idParamPage, meetup.id]);
 
   return (
     <Container>
@@ -77,7 +41,7 @@ function Details({ match }) {
         </div>
       </header>
 
-      <img src={image} alt="Banner" />
+      <img src={meetup.banner.url} alt="Banner" />
       <span>{meetup.description}</span>
 
       <footer>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
-import { parseISO } from 'date-fns';
+import { parseISO, format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import { MdAddCircleOutline } from 'react-icons/md';
 import { Spinner } from 'react-activity';
 import * as Yup from 'yup';
@@ -12,9 +13,10 @@ import DatePickerMeetup from '~/components/DatePicker';
 import {
   createMeetupRequest,
   updateMeetupRequest,
+  clearMeetup,
 } from '~/store/modules/meetup/actions';
 
-import api from '~/services/api';
+import history from '~/services/history';
 
 import { Container, Button } from './styles';
 
@@ -27,33 +29,24 @@ const schema = Yup.object().shape({
 });
 
 function FormMeetup({ match }) {
-  const { id } = match.params;
-  const [meetup, setMeetup] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const idParamPage = Number(match.params.id);
 
   const dispatch = useDispatch();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  async function loadingMeetup() {
-    setLoading(true);
+  const meetup = useSelector(state => state.meetup.meetup);
+  const loading = useSelector(state => state.meetup.loading);
 
-    const response = await api.get(`meetups/${id}`);
+  const initialData = !idParamPage ? [] : meetup;
 
-    setMeetup(response.data);
+  console.tron.log('INICIAL_DATA', initialData);
+  console.tron.log('MEETUP', meetup);
 
-    setLoading(false);
-  }
-
-  useEffect(() => {
-    if (!id) {
-      setMeetup([]);
-    } else {
-      loadingMeetup();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
-
-  console.tron.log('meetup', meetup);
+  // useEffect(() => {
+  //   if (!idParamPage) {
+  //     dispatch(clearMeetup());
+  //     // history.push('/');
+  //   }
+  // }, [dispatch, idParamPage, meetup]);
 
   function handleCreateMeetup(data) {
     dispatch(createMeetupRequest(data));
@@ -66,32 +59,27 @@ function FormMeetup({ match }) {
   return (
     <Container>
       <Form
-        onSubmit={id ? handleUpdateMeetup : handleCreateMeetup}
-        initialData={meetup}
+        onSubmit={meetup ? handleUpdateMeetup : handleCreateMeetup}
+        initialData={initialData}
         schema={schema}
       >
         <BannerInput name="banner_id" />
 
         <Input name="title" type="text" placeholder="Título do Meetup" />
-        <Input
-          name="description"
-          placeholder="Descrição completa"
-          multiline
-          value={meetup.description}
-        />
+        <Input name="description" placeholder="Descrição completa" multiline />
         <DatePickerMeetup name="date" placeholder="Data do meetup" />
         <Input name="location" type="text" placeholder="Localização" />
 
         <div className="divButtonSave">
           <Button type="submit">
-            {loading ? (
+            {/* {loading ? (
               <Spinner color="#fff" size={14} />
             ) : (
-              <>
-                <MdAddCircleOutline size={20} color="#fff" />
-                Salvar Meetup
-              </>
-            )}
+              <> */}
+            <MdAddCircleOutline size={20} color="#fff" />
+            {meetup ? 'Atualizar' : 'Salvar'} Meetup
+            {/* </>
+            )} */}
           </Button>
         </div>
       </Form>

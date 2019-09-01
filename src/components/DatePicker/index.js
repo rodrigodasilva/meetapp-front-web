@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
+import { parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
 import { useField } from '@rocketseat/unform';
@@ -8,7 +9,10 @@ import { useField } from '@rocketseat/unform';
 export default function DatePickerMeetup({ name, placeholder }) {
   const ref = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
-  const [selected, setSelected] = useState(defaultValue);
+
+  const parsedDate = parseISO(defaultValue);
+  const dateSelected = +parsedDate ? parsedDate : '';
+  const [selected, setSelected] = useState(dateSelected);
 
   useEffect(() => {
     registerField({
@@ -35,6 +39,7 @@ export default function DatePickerMeetup({ name, placeholder }) {
         timeFormat="HH:mm"
         timeIntervals={60}
         placeholderText={placeholder}
+        autoComplete="off"
         locale={pt}
       />
       {error && <span>{error}</span>}
