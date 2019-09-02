@@ -44,6 +44,13 @@ export function updateMeetupFailure() {
   };
 }
 
+export function cancelMeetup(id) {
+  return {
+    type: '@meetup/CANCEL_MEETUP',
+    payload: { id },
+  };
+}
+
 export function clearMeetup() {
   return {
     type: '@meetup/CLEAR_MEETUP',

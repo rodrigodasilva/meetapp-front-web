@@ -43,7 +43,7 @@ export default createGlobalStyle`
   }
 
   div.Toastify__toast {
-    font: 14px 'Roboto', sans-serif;
+    font: 15px 'Roboto', sans-serif;
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 4px;

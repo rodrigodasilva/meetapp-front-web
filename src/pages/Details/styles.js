@@ -20,6 +20,12 @@ export const Container = styled.div`
       color: #fff;
     }
 
+    .meetupIsAlready {
+      color: #d44059;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
     div {
       display: flex;
       flex-direction: row;
@@ -74,7 +80,7 @@ export const Button = styled.button`
   font-weight: bold;
   color: #fff;
 
-  width: ${props => (props.primary ? '116px' : '138px')};
+  width: ${props => (props.primary ? '116px' : '190px')};
   background: ${props => (props.primary ? '#4DBAF9' : '#D44059')};
 
   svg {

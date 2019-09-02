@@ -42,7 +42,7 @@ export default function DatePickerMeetup({ name, placeholder }) {
         autoComplete="off"
         locale={pt}
       />
-      {error && <span>{error}</span>}
+      {error && <span>Insira uma data</span>}
     </>
   );
 }

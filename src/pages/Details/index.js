@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { parseISO, format } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { MdDateRange, MdLocationOn, MdEdit, MdCancel } from 'react-icons/md';
 
 import { Container, Button } from './styles';
 
+import { cancelMeetup } from '~/store/modules/meetup/actions';
+import { checkIfPageIsDashboard } from '~/store/modules/dashboard/action';
+
 import history from '~/services/history';
 
 function Details({ match }) {
-  // const idParamPage = Number(match.params.id);
+  const idParamPage = Number(match.params.id);
+
+  const dispatch = useDispatch();
 
   const meetup = useSelector(state => state.meetup.meetup);
 
-  // useEffect(() => {
-  //   if (idParamPage !== meetup.id) history.push('/');
-  // }, [idParamPage, meetup.id]);
+  dispatch(checkIfPageIsDashboard(false));
+
+  useEffect(() => {
+    if (idParamPage !== meetup.id) history.push('/');
+  }, [idParamPage, meetup.id]);
+
+  function handleCancelMeetup() {
+    dispatch(cancelMeetup(meetup.id));
+  }
 
   return (
     <Container>
@@ -25,19 +34,23 @@ function Details({ match }) {
         <h1>{meetup.title}</h1>
 
         <div>
-          <Link to={`/edit/${meetup.id}`}>
-            <Button type="button" primary>
-              <MdEdit size={20} color="#fff" />
-              Editar
-            </Button>
-          </Link>
+          {meetup.past ? (
+            <h1 className="meetupIsAlready">Meetup já aconteceu!</h1>
+          ) : (
+            <>
+              <Link to={`/edit/${meetup.id}`}>
+                <Button type="button" primary>
+                  <MdEdit size={20} color="#fff" />
+                  Editar
+                </Button>
+              </Link>
 
-          <Link to="/">
-            <Button type="button">
-              <MdCancel size={20} color="#fff" />
-              Cancelar
-            </Button>
-          </Link>
+              <Button type="button" onClick={handleCancelMeetup}>
+                <MdCancel size={20} color="#fff" />
+                Cancelar Meetup
+              </Button>
+            </>
+          )}
         </div>
       </header>
 
@@ -58,21 +71,12 @@ function Details({ match }) {
   );
 }
 
-// Details.propTypes = {
-//   location: PropTypes.shape({
-//     state: PropTypes.shape({
-//       meetup: PropTypes.shape({
-//         id: PropTypes.number,
-//         title: PropTypes.string,
-//         description: PropTypes.string,
-//         location: PropTypes.string,
-//         file: PropTypes.shape({
-//           url: PropTypes.string,
-//         }),
-//         dateFormatted: PropTypes.string,
-//       }),
-//     }),
-//   }).isRequired,
-// };
+Details.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default Details;

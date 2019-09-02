@@ -4,13 +4,15 @@ import { useDispatch } from 'react-redux';
 import { parseISO, format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
+import { FaRegSadTear } from 'react-icons/fa';
 
 import {
   requestDetailsMeetup,
   clearMeetup,
 } from '~/store/modules/meetup/actions';
+import { checkIfPageIsDashboard } from '~/store/modules/dashboard/action';
 
-import { Container, Meetup } from './styles';
+import { Container, Meetup, Empty } from './styles';
 
 import api from '~/services/api';
 
@@ -20,6 +22,7 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   dispatch(clearMeetup());
+  dispatch(checkIfPageIsDashboard(true));
 
   useEffect(() => {
     async function loadMeetups() {
@@ -58,20 +61,27 @@ export default function Dashboard() {
         </Link>
       </header>
 
-      <ul>
-        {meetups.map(meetup => (
-          <Meetup key={meetup.id}>
-            <strong>{meetup.title}</strong>
+      {meetups.length < 1 ? (
+        <Empty>
+          <FaRegSadTear size={50} color="#fff" />
+          <h1>Nenhum meetup cadastrado!</h1>
+        </Empty>
+      ) : (
+        <ul>
+          {meetups.map(meetup => (
+            <Meetup key={meetup.id} past={meetup.past}>
+              <strong>{meetup.title}</strong>
 
-            <div>
-              <span>{meetup.dateFormatted}</span>
-              <button onClick={() => handleDetails(meetup)} type="button">
-                <MdChevronRight size={24} color="#fff" />
-              </button>
-            </div>
-          </Meetup>
-        ))}
-      </ul>
+              <div>
+                <span>{meetup.dateFormatted}</span>
+                <button onClick={() => handleDetails(meetup)} type="button">
+                  <MdChevronRight size={28} color="#fff" />
+                </button>
+              </div>
+            </Meetup>
+          ))}
+        </ul>
+      )}
     </Container>
   );
 }

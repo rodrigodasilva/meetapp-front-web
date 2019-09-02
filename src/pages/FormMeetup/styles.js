@@ -51,14 +51,14 @@ export const Container = styled.div`
 
     .react-datepicker {
       padding: 1px;
-      border: 2px solid #d44459;
+      border: 2px solid #fff;
       box-shadow: 12px 15px 20px rgba(0, 0, 0, 0.05);
     }
 
     .react-datepicker__header {
       border-bottom: none;
       background: #d44459;
-      border-radius: 0;
+      border-radius: 4px;
     }
 
     .react-datepicker__navigation--previous {
@@ -71,7 +71,7 @@ export const Container = styled.div`
 
     .react-datepicker-popper[data-placement^='top']
       .react-datepicker__triangle {
-      border-top-color: #d44459;
+      border-top-color: #fff;
       bottom: -1px;
     }
 
@@ -85,6 +85,7 @@ export const Container = styled.div`
 
     .react-datepicker__time-container {
       border-left: none;
+      margin-left: 2px;
     }
 
     .react-datepicker__day-name {

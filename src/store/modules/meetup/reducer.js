@@ -8,11 +8,6 @@ const INITIAL_STATE = {
 function meetup(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      //       case '@auth/SIGN_OUT': {
-      //         draft.meetup = null;
-      //         break;
-      //       }
-
       case '@meetup/REQUEST_DETAILS_MEETUP': {
         draft.meetup = action.payload.meetup;
         break;

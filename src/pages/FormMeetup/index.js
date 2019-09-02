@@ -15,6 +15,7 @@ import {
   updateMeetupRequest,
   clearMeetup,
 } from '~/store/modules/meetup/actions';
+import { checkIfPageIsDashboard } from '~/store/modules/dashboard/action';
 
 import history from '~/services/history';
 
@@ -33,20 +34,20 @@ function FormMeetup({ match }) {
 
   const dispatch = useDispatch();
 
+  dispatch(checkIfPageIsDashboard(false));
+
   const meetup = useSelector(state => state.meetup.meetup);
   const loading = useSelector(state => state.meetup.loading);
 
   const initialData = !idParamPage ? [] : meetup;
 
-  console.tron.log('INICIAL_DATA', initialData);
-  console.tron.log('MEETUP', meetup);
-
-  // useEffect(() => {
-  //   if (!idParamPage) {
-  //     dispatch(clearMeetup());
-  //     // history.push('/');
-  //   }
-  // }, [dispatch, idParamPage, meetup]);
+  useEffect(() => {
+    if (idParamPage) {
+      if (meetup) {
+        if (idParamPage !== meetup.id) history.push('/');
+      }
+    }
+  }, [dispatch, idParamPage, meetup]);
 
   function handleCreateMeetup(data) {
     dispatch(createMeetupRequest(data));
@@ -72,14 +73,14 @@ function FormMeetup({ match }) {
 
         <div className="divButtonSave">
           <Button type="submit">
-            {/* {loading ? (
+            {loading ? (
               <Spinner color="#fff" size={14} />
             ) : (
-              <> */}
-            <MdAddCircleOutline size={20} color="#fff" />
-            {meetup ? 'Atualizar' : 'Salvar'} Meetup
-            {/* </>
-            )} */}
+              <>
+                <MdAddCircleOutline size={20} color="#fff" />
+                {meetup ? 'Atualizar' : 'Salvar'} Meetup
+              </>
+            )}
           </Button>
         </div>
       </Form>

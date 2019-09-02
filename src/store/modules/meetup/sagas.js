@@ -46,8 +46,23 @@ export function* updateMeetup({ payload }) {
   }
 }
 
+export function* cancelMeetup({ payload }) {
+  const { id } = payload;
+
+  try {
+    yield call(api.delete, `meetups/${id}`);
+
+    history.push('/');
+
+    toast.success(`Meetup cancelado com sucesso`);
+  } catch (err) {
+    toast.error('Erro ao cancelar o Meetup');
+  }
+}
+
 export default all([
   takeLatest('@meetup/REQUEST_DETAILS_MEETUP', requestDetailsMeetup),
   takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
   takeLatest('@meetup/UPDATE_MEETUP_REQUEST', updateMeetup),
+  takeLatest('@meetup/CANCEL_MEETUP', cancelMeetup),
 ]);

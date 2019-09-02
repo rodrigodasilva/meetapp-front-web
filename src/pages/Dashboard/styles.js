@@ -48,14 +48,33 @@ export const Container = styled.div`
   }
 `;
 
+export const Empty = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+  }
+`;
+
 export const Meetup = styled.li`
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
   padding: 20px 30px;
   border-radius: 4px;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  opacity: ${props => (props.past ? '0.5' : '1')};
 
   strong {
     font-size: 18px !important;
@@ -70,6 +89,11 @@ export const Meetup = styled.li`
       margin-right: 30px;
       font-size: 16px;
       color: rgba(255, 255, 255, 0.6);
+    }
+
+    button {
+      background: none;
+      border: 0;
     }
   }
 `;

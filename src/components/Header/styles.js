@@ -28,6 +28,25 @@ export const Content = styled.div`
       font-weight: bold;
       color: #7159c1;
     }
+
+    .buttonGoBack {
+      background: none;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+      margin-left: 25px;
+
+      svg {
+      }
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
   }
 
   aside {
