@@ -119,20 +119,6 @@ export const Meetup = styled.li`
 
   opacity: ${props => (props.past ? '0.5' : '1')};
 
-  @media (max-width: 555px) {
-    flex-direction: column;
-
-    strong {
-      margin-bottom: 5px;
-      align-self: flex-start;
-    }
-
-    div {
-      width: 100%;
-      justify-content: space-between;
-    }
-  }
-
   strong {
     font-size: 18px !important;
     color: #fff;
@@ -151,6 +137,20 @@ export const Meetup = styled.li`
     button {
       background: none;
       border: 0;
+    }
+  }
+
+  @media (max-width: 555px) {
+    flex-direction: column;
+
+    strong {
+      margin-bottom: 5px;
+      align-self: flex-start;
+    }
+
+    div {
+      width: 100%;
+      justify-content: space-between;
     }
   }
 `;

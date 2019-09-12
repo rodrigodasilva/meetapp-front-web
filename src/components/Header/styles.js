@@ -15,7 +15,7 @@ export const Content = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  nav {
+  aside {
     display: flex;
     align-items: center;
 
@@ -49,13 +49,61 @@ export const Content = styled.div`
     }
   }
 
-  aside {
+  .profile {
     display: flex;
     align-items: center;
   }
+
+  @media (max-width: 529px) {
+    .profile {
+      display: none;
+    }
+  }
+
+  @media (min-width: 530px) {
+    .menu {
+      display: none;
+    }
+  }
+
+  .menu.open {
+    position: fixed;
+    z-index: 4;
+    right: 45px;
+  }
+
+  .menu.open + nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .menu.open + nav a {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #fff;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .menu.open + nav button {
+    font-weight: bold;
+    margin: 0;
+  }
 `;
 
-export const Profile = styled.div`
+export const Profile = styled.nav`
   display: flex;
   margin-left: 20px;
   padding-left: 20px;
@@ -98,5 +146,16 @@ export const Profile = styled.div`
     &:hover {
       background: ${darken(0.03, '#d44059')};
     }
+  }
+`;
+
+export const ButtonMenu = styled.button`
+  background: none;
+  border: 0;
+  border-radius: 4px;
+  color: #fff;
+
+  &:hover {
+    opacity: 0.3;
   }
 `;
