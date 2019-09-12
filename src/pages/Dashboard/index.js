@@ -56,17 +56,12 @@ export default function Dashboard() {
         <Link to="/new">
           <button type="button">
             <MdAddCircleOutline size={20} color="#fff" />
-            Novo meetup
+            <span>Novo &nbsp;</span> <span> meetup</span>
           </button>
         </Link>
       </header>
 
-      {meetups.length < 1 ? (
-        <Empty>
-          <FaRegSadTear size={50} color="#fff" />
-          <h1>Nenhum meetup cadastrado!</h1>
-        </Empty>
-      ) : (
+      {meetups.length > 1 ? (
         <ul>
           {meetups.map(meetup => (
             <Meetup key={meetup.id} past={meetup.past}>
@@ -81,6 +76,11 @@ export default function Dashboard() {
             </Meetup>
           ))}
         </ul>
+      ) : (
+        <Empty>
+          <FaRegSadTear size={50} color="#fff" />
+          <h1>Nenhum meetup cadastrado!</h1>
+        </Empty>
       )}
     </Container>
   );

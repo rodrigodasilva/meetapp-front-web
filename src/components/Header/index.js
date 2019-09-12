@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { MdChevronLeft } from 'react-icons/md';
 
 import { signOut } from '~/store/modules/auth/actions';
-import { checkIfPageIsDashboard } from '~/store/modules/dashboard/action';
 
 import logo from '~/assets/logo.png';
 
@@ -16,7 +15,6 @@ export default function Header() {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile);
   const checkIfPageIsDashboard = useSelector(state => state.dashboard.check);
-  console.tron.log('checkIfPageIsDashboard', checkIfPageIsDashboard);
 
   function handleSignOut() {
     dispatch(signOut());

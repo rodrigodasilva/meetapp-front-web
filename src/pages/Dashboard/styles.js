@@ -6,6 +6,10 @@ export const Container = styled.div`
   max-width: 940px;
   margin: 50px auto;
 
+  @media (max-width: 980px) {
+    padding: 0 30px;
+  }
+
   header {
     display: flex;
     flex-direction: row;
@@ -45,6 +49,44 @@ export const Container = styled.div`
         margin-right: 10px;
       }
     }
+
+    @media (max-width: 555px) {
+      button {
+        width: 120px;
+
+        span {
+          & + span {
+            display: none;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      flex-direction: column;
+
+      h1 {
+        margin-bottom: 15px;
+      }
+
+      a {
+        width: 100%;
+
+        button {
+          width: 100%;
+
+          span + span {
+            display: inline;
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -53,6 +95,7 @@ export const Empty = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 100px;
 
   svg {
     margin-bottom: 10px;
@@ -75,6 +118,20 @@ export const Meetup = styled.li`
   align-items: center;
 
   opacity: ${props => (props.past ? '0.5' : '1')};
+
+  @media (max-width: 555px) {
+    flex-direction: column;
+
+    strong {
+      margin-bottom: 5px;
+      align-self: flex-start;
+    }
+
+    div {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
 
   strong {
     font-size: 18px !important;
