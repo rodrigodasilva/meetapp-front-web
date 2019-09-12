@@ -59,7 +59,7 @@ function Details({ match }) {
 
       <footer>
         <time>
-          <MdDateRange size={20} color="rgba(255, 255, 255, 0.6)" />{' '}
+          <MdDateRange size={20} color="rgba(255, 255, 255, 0.6)" />
           {meetup.dateFormatted}
         </time>
         <address>

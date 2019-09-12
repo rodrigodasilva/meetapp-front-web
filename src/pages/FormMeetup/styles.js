@@ -5,6 +5,14 @@ export const Container = styled.div`
   max-width: 940px;
   margin: 50px auto;
 
+  @media (max-width: 980px) {
+    padding: 0 30px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 0 15px;
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -30,6 +38,18 @@ export const Container = styled.div`
       height: 200px;
       font: 18px 'Roboto', sans-serif;
       padding: 15px;
+    }
+
+    @media (max-width: 530px) {
+      input,
+      textarea {
+        font-size: 16px;
+        height: 44px;
+      }
+
+      textarea {
+        height: 130px;
+      }
     }
 
     span {
@@ -145,5 +165,12 @@ export const Button = styled.button`
 
   &:hover {
     background: ${darken(0.06, '#F94D6A')};
+  }
+
+  @media (max-width: 340px) {
+    width: 100%;
+    font-size: 16px;
+    height: 38px;
+    margin-top: 20px;
   }
 `;

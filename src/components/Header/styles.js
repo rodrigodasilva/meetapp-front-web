@@ -5,6 +5,10 @@ import { darken } from 'polished';
 export const Container = styled.div`
   background: rgba(0, 0, 0, 0.2);
   padding: 0 30px;
+
+  @media (max-width: 360px) {
+    padding: 0 20px;
+  }
 `;
 
 export const Content = styled.div`
@@ -19,16 +23,6 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
 
-    img {
-      width: 31px;
-      height: 32px;
-    }
-
-    a {
-      font-weight: bold;
-      color: #7159c1;
-    }
-
     .buttonGoBack {
       background: none;
       border: none;
@@ -40,11 +34,18 @@ export const Content = styled.div`
       font-size: 14px;
       margin-left: 25px;
 
-      svg {
-      }
-
       &:hover {
         opacity: 0.5;
+      }
+
+      @media (max-width: 280px) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 529px) {
+      img {
+        width: 28px;
       }
     }
   }
@@ -69,7 +70,7 @@ export const Content = styled.div`
   .menu.open {
     position: fixed;
     z-index: 4;
-    right: 45px;
+    right: 30px;
   }
 
   .menu.open + nav {
@@ -83,13 +84,15 @@ export const Content = styled.div`
     top: 0;
     left: 0;
     margin: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(-90deg, #402845, #22202c);
+    opacity: 0.95;
+    z-index: 2;
   }
 
   .menu.open + nav a {
     font-size: 25px;
     font-weight: bold;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
     color: #fff;
 
     &:hover {
@@ -99,7 +102,8 @@ export const Content = styled.div`
 
   .menu.open + nav button {
     font-weight: bold;
-    margin: 0;
+    margin-left: 0;
+    font-size: 18px;
   }
 `;
 
@@ -126,11 +130,6 @@ export const Profile = styled.nav`
       color: #999;
       text-transform: none;
     }
-  }
-
-  img {
-    height: 32px;
-    border-radius: 50px;
   }
 
   button {

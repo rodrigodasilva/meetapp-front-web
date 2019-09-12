@@ -21,6 +21,10 @@ export const Container = styled.div`
       color: #fff;
       font-size: 32px;
       font-weight: bold;
+
+      @media (max-width: 530px) {
+        font-size: 28px;
+      }
     }
 
     button {
@@ -54,10 +58,8 @@ export const Container = styled.div`
       button {
         width: 120px;
 
-        span {
-          & + span {
-            display: none;
-          }
+        span + span {
+          display: none;
         }
       }
     }

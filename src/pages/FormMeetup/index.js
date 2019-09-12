@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
-import { parseISO, format } from 'date-fns';
-import pt from 'date-fns/locale/pt';
 import { MdAddCircleOutline } from 'react-icons/md';
 import { Spinner } from 'react-activity';
 import * as Yup from 'yup';
@@ -13,7 +11,6 @@ import DatePickerMeetup from '~/components/DatePicker';
 import {
   createMeetupRequest,
   updateMeetupRequest,
-  clearMeetup,
 } from '~/store/modules/meetup/actions';
 import { checkIfPageIsDashboard } from '~/store/modules/dashboard/action';
 

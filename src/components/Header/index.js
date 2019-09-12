@@ -29,13 +29,13 @@ export default function Header() {
   function handleClickMenu() {
     setToggle(!toggle);
   }
-  console.tron.log(toggle);
+
   return (
     <Container>
       <Content>
         <aside>
           <Link to="/dashboard">
-            <img src={logo} alt="Gobarber" />
+            <img src={logo} alt="MeetApp" />
           </Link>
           {!checkIfPageIsDashboard && (
             <button type="button" onClick={goBack} className="buttonGoBack">

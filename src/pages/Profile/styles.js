@@ -5,6 +5,14 @@ export const Container = styled.div`
   max-width: 940px;
   margin: 50px auto;
 
+  @media (max-width: 980px) {
+    padding: 0 30px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 0 15px;
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -67,6 +75,11 @@ export const Container = styled.div`
 
         svg {
           margin-right: 10px;
+        }
+
+        @media (max-width: 360px) {
+          width: 100%;
+          margin-top: 15px;
         }
       }
     }

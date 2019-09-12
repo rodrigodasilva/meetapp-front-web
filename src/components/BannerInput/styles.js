@@ -26,7 +26,6 @@ export const Container = styled.div`
     }
 
     div {
-      /* width: 100%; */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -44,7 +43,23 @@ export const Container = styled.div`
       display: none;
       width: 100%;
       height: 80px;
-      /* background: #555; */
+    }
+  }
+
+  @media (max-width: 610px) {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+
+  @media (max-width: 450px) {
+    img {
+      height: 200px;
+    }
+  }
+
+  @media (max-width: 250px) {
+    img {
+      height: 160px;
     }
   }
 `;
