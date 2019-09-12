@@ -5,6 +5,7 @@ import { darken } from 'polished';
 export const Container = styled.div`
   background: rgba(0, 0, 0, 0.2);
   padding: 0 30px;
+  margin-bottom: 50px;
 
   @media (max-width: 360px) {
     padding: 0 20px;

@@ -4,7 +4,9 @@ import { darken } from 'polished';
 
 export const Container = styled.div`
   max-width: 940px;
-  margin: 50px auto;
+  min-height: calc(100% - 130px);
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: 980px) {
     padding: 0 30px;
@@ -92,21 +94,22 @@ export const Container = styled.div`
   }
 `;
 
-export const Empty = styled.div`
+export const ContainerEmpty = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
-
-  svg {
-    margin-bottom: 10px;
-  }
+  flex: 1;
+  text-align: center;
 
   h1 {
     color: #fff;
+    opacity: 0.5;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 26px;
+
+    @media (max-width: 530px) {
+      font-size: 22px;
+    }
   }
 `;
 

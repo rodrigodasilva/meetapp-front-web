@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { parseISO, format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
-import { FaRegSadTear } from 'react-icons/fa';
+import { Spinner } from 'react-activity';
 
 import {
   requestDetailsMeetup,
@@ -12,12 +12,13 @@ import {
 } from '~/store/modules/meetup/actions';
 import { checkIfPageIsDashboard } from '~/store/modules/dashboard/action';
 
-import { Container, Meetup, Empty } from './styles';
+import { Container, Meetup, ContainerEmpty } from './styles';
 
 import api from '~/services/api';
 
 export default function Dashboard() {
   const [meetups, setMeetups] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -40,10 +41,11 @@ export default function Dashboard() {
       }));
 
       setMeetups(data);
+      setLoading(false);
     }
 
     loadMeetups();
-  }, []);
+  }, [loading]);
 
   function handleDetails(meetup) {
     dispatch(requestDetailsMeetup(meetup));
@@ -61,7 +63,13 @@ export default function Dashboard() {
         </Link>
       </header>
 
-      {meetups.length > 1 ? (
+      {loading && (
+        <ContainerEmpty>
+          <Spinner size={25} color="#F94D6A" />
+        </ContainerEmpty>
+      )}
+
+      {meetups.length >= 1 && !loading && (
         <ul>
           {meetups.map(meetup => (
             <Meetup key={meetup.id} past={meetup.past}>
@@ -76,11 +84,12 @@ export default function Dashboard() {
             </Meetup>
           ))}
         </ul>
-      ) : (
-        <Empty>
-          <FaRegSadTear size={50} color="#fff" />
+      )}
+
+      {meetups.length === 0 && !loading && (
+        <ContainerEmpty>
           <h1>Nenhum meetup cadastrado!</h1>
-        </Empty>
+        </ContainerEmpty>
       )}
     </Container>
   );
