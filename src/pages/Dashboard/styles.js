@@ -73,10 +73,22 @@ export const Container = styled.div`
     }
 
     @media (max-width: 400px) {
+      a {
+        width: 100px;
+
+        button {
+          width: 100px;
+          height: 38px;
+        }
+      }
+    }
+
+    @media (max-width: 380px) {
       flex-direction: column;
 
       h1 {
         margin-bottom: 15px;
+        text-align: center;
       }
 
       a {
@@ -86,7 +98,7 @@ export const Container = styled.div`
           width: 100%;
 
           span + span {
-            display: inline;
+            /* display: none; */
           }
         }
       }
@@ -127,6 +139,7 @@ export const Meetup = styled.li`
   strong {
     font-size: 18px !important;
     color: #fff;
+    margin-right: 10px;
   }
 
   div {

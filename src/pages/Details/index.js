@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { MdDateRange, MdLocationOn, MdEdit, MdCancel } from 'react-icons/md';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import { Container, Button } from './styles';
 
 import { cancelMeetup } from '~/store/modules/meetup/actions';
-import { checkIfPageIsDashboard } from '~/store/modules/dashboard/action';
+import { setCurrentPage } from '~/store/modules/currentPage/action';
 
 import history from '~/services/history';
 
@@ -18,7 +20,15 @@ function Details({ match }) {
 
   const meetup = useSelector(state => state.meetup.meetup);
 
-  dispatch(checkIfPageIsDashboard(false));
+  const dateFormatted = format(
+    parseISO(meetup.date),
+    "dd ' de ' MMMM ', às ' HH:mm'h'",
+    {
+      locale: pt,
+    }
+  );
+
+  dispatch(setCurrentPage('Details'));
 
   useEffect(() => {
     if (idParamPage !== meetup.id) history.push('/');
@@ -60,7 +70,7 @@ function Details({ match }) {
       <footer>
         <time>
           <MdDateRange size={20} color="rgba(255, 255, 255, 0.6)" />
-          {meetup.dateFormatted}
+          {dateFormatted}
         </time>
         <address>
           <MdLocationOn size={20} color="rgba(255, 255, 255, 0.6)" />

@@ -14,7 +14,7 @@ import history from '~/services/history';
 export default function Header() {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile);
-  const checkIfPageIsDashboard = useSelector(state => state.dashboard.check);
+  const checkCurrentPage = useSelector(state => state.currentPage.page);
 
   const [toggle, setToggle] = useState(false);
 
@@ -37,7 +37,7 @@ export default function Header() {
           <Link to="/dashboard">
             <img src={logo} alt="MeetApp" />
           </Link>
-          {!checkIfPageIsDashboard && (
+          {checkCurrentPage !== 'Dashboard' && (
             <button type="button" onClick={goBack} className="buttonGoBack">
               <MdChevronLeft size={30} color="#fff" />
               Voltar
@@ -68,14 +68,22 @@ export default function Header() {
           ) : (
             <>
               <div>
-                <Link to="/profile" onClick={() => setToggle(false)}>
-                  Meu Perfil
+                <Link
+                  to="/dashboard"
+                  onClick={() => setToggle(false)}
+                  className={checkCurrentPage === 'Dashboard' ? 'active' : ''}
+                >
+                  Dashboard
                 </Link>
               </div>
 
               <div>
-                <Link to="/new" onClick={() => setToggle(false)}>
-                  Novo Meetup
+                <Link
+                  to="/profile"
+                  onClick={() => setToggle(false)}
+                  className={checkCurrentPage === 'Profile' ? 'active' : ''}
+                >
+                  Meu Perfil
                 </Link>
               </div>
 

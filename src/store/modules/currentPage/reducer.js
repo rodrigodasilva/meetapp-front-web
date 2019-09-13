@@ -1,14 +1,19 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  check: true,
+  page: '',
 };
 
 export default function user(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case '@dashboard/CHECK_IF_PAGE_IS_DASHBOARD': {
-        draft.check = action.payload.check;
+      case '@currentPage/CHECK_CURRENT_PAGE': {
+        draft.page = action.payload.page;
+        break;
+      }
+
+      case '@currentPage/SET_CURRENT_PAGE': {
+        draft.page = action.payload.page;
         break;
       }
 

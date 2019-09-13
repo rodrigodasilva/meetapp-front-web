@@ -91,7 +91,7 @@ export const Content = styled.div`
   }
 
   .menu.open + nav a {
-    font-size: 25px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 35px;
     color: #fff;
@@ -130,6 +130,22 @@ export const Profile = styled.nav`
       font-size: 14px;
       color: #999;
       text-transform: none;
+    }
+  }
+
+  div a.active {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute !important;
+      width: 100%;
+      height: 4px;
+      border-radius: 4px;
+      margin-top: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #d44059 !important;
     }
   }
 

@@ -12,7 +12,8 @@ import {
   createMeetupRequest,
   updateMeetupRequest,
 } from '~/store/modules/meetup/actions';
-import { checkIfPageIsDashboard } from '~/store/modules/dashboard/action';
+
+import { setCurrentPage } from '~/store/modules/currentPage/action';
 
 import history from '~/services/history';
 
@@ -31,8 +32,6 @@ function FormMeetup({ match }) {
 
   const dispatch = useDispatch();
 
-  dispatch(checkIfPageIsDashboard(false));
-
   const meetup = useSelector(state => state.meetup.meetup);
   const loading = useSelector(state => state.meetup.loading);
 
@@ -44,6 +43,8 @@ function FormMeetup({ match }) {
         if (idParamPage !== meetup.id) history.push('/');
       }
     }
+
+    dispatch(setCurrentPage('New'));
   }, [dispatch, idParamPage, meetup]);
 
   function handleCreateMeetup(data) {

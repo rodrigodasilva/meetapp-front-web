@@ -5,7 +5,7 @@ import { MdAddCircleOutline } from 'react-icons/md';
 import { Spinner } from 'react-activity';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
-import { checkIfPageIsDashboard } from '~/store/modules/dashboard/action';
+import { setCurrentPage } from '~/store/modules/currentPage/action';
 
 import { Container } from './styles';
 
@@ -15,7 +15,7 @@ export default function Profile() {
 
   const dispatch = useDispatch();
 
-  dispatch(checkIfPageIsDashboard(false));
+  dispatch(setCurrentPage('Profile'));
 
   function handleSubmit(data) {
     dispatch(updateProfileRequest(data));

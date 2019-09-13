@@ -44,22 +44,24 @@ export const Container = styled.div`
       width: 100%;
       height: 80px;
     }
+
+    @media (max-width: 375px) {
+      &,
+      img {
+        height: 190px;
+      }
+    }
+
+    @media (max-width: 425px) {
+      &,
+      img {
+        height: 220px;
+      }
+    }
   }
 
   @media (max-width: 610px) {
     margin-left: -30px;
     margin-right: -30px;
-  }
-
-  @media (max-width: 450px) {
-    img {
-      height: 200px;
-    }
-  }
-
-  @media (max-width: 250px) {
-    img {
-      height: 160px;
-    }
   }
 `;

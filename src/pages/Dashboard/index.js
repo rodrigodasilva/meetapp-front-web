@@ -10,7 +10,8 @@ import {
   requestDetailsMeetup,
   clearMeetup,
 } from '~/store/modules/meetup/actions';
-import { checkIfPageIsDashboard } from '~/store/modules/dashboard/action';
+
+import { setCurrentPage } from '~/store/modules/currentPage/action';
 
 import { Container, Meetup, ContainerEmpty } from './styles';
 
@@ -23,7 +24,8 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   dispatch(clearMeetup());
-  dispatch(checkIfPageIsDashboard(true));
+
+  dispatch(setCurrentPage('Dashboard'));
 
   useEffect(() => {
     async function loadMeetups() {

@@ -27,6 +27,10 @@ export const Container = styled.div`
       font-weight: bold;
       color: #fff;
 
+      @media (max-width: 760px) {
+        text-align: center;
+      }
+
       @media (max-width: 530px) {
         font-size: 28px;
       }
@@ -152,9 +156,6 @@ export const Button = styled.button`
 
   @media (max-width: 760px) {
     margin-left: 0;
-  }
-
-  @media (max-width: 530px) {
     height: 38px;
     font-size: 16px;
   }

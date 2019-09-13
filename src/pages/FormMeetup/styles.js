@@ -167,7 +167,7 @@ export const Button = styled.button`
     background: ${darken(0.06, '#F94D6A')};
   }
 
-  @media (max-width: 340px) {
+  @media (max-width: 375px) {
     width: 100%;
     font-size: 16px;
     height: 38px;
