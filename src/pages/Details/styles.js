@@ -57,7 +57,17 @@ export const Container = styled.div`
       }
     }
 
-    @media (max-width: 410px) {
+    @media (max-width: 380px) {
+      div svg {
+        display: none;
+      }
+
+      div button {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 290px) {
       div {
         flex-direction: column;
 
@@ -69,6 +79,10 @@ export const Container = styled.div`
         button {
           width: 100%;
         }
+      }
+
+      div svg {
+        display: block;
       }
     }
   }
@@ -142,7 +156,7 @@ export const Button = styled.button`
   font-weight: bold;
   color: #fff;
 
-  width: ${props => (props.primary ? '116px' : '190px')};
+  width: ${props => (props.primary ? '116px' : '120px')};
   background: ${props => (props.primary ? '#4DBAF9' : '#D44059')};
 
   svg {

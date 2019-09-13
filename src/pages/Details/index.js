@@ -57,7 +57,7 @@ function Details({ match }) {
 
               <Button type="button" onClick={handleCancelMeetup}>
                 <MdCancel size={20} color="#fff" />
-                Cancelar Meetup
+                Cancelar
               </Button>
             </>
           )}

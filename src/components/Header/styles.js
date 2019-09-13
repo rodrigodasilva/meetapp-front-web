@@ -5,7 +5,7 @@ import { darken } from 'polished';
 export const Container = styled.div`
   background: rgba(0, 0, 0, 0.2);
   padding: 0 30px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 
   @media (max-width: 360px) {
     padding: 0 20px;
@@ -24,11 +24,6 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
 
-    a {
-      position: fixed;
-      z-index: 3;
-    }
-
     .buttonGoBack {
       background: none;
       border: none;
@@ -38,7 +33,7 @@ export const Content = styled.div`
       color: #fff;
       font-weight: bold;
       font-size: 14px;
-      margin-left: 50px;
+      margin-left: 25px;
 
       &:hover {
         opacity: 0.5;

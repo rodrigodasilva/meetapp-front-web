@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { darken } from 'polished';
+import { darken, lighten } from 'polished';
 
 export const Container = styled.div`
   margin: 0 auto;
@@ -18,7 +18,7 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 48px;
+    margin-bottom: 30px;
 
     h1 {
       color: #fff;
@@ -107,6 +107,18 @@ export const Container = styled.div`
   }
 `;
 
+export const ContainerMeetups = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
+  /* text-align: center; */
+
+  ul {
+    width: 100%;
+  }
+`;
+
 export const ContainerEmpty = styled.div`
   display: flex;
   justify-content: center;
@@ -170,6 +182,59 @@ export const Meetup = styled.li`
     div {
       width: 100%;
       justify-content: space-between;
+    }
+  }
+`;
+
+export const Pagination = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+
+  span {
+    color: #fff;
+    font-weight: bold;
+    margin: 0 15px;
+  }
+
+  button {
+    color: ${lighten(0.05, '#f94d6a')};
+    border: none;
+    background: none;
+
+    transition: background 0.2s;
+
+    &:hover {
+      color: #fff;
+    }
+
+    &:disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+      /* display: none; */
+
+      &:hover {
+        color: ${lighten(0.05, '#f94d6a')};
+      }
+
+      & > .__react_component_tooltip {
+        display: none;
+      }
+    }
+
+    .__react_component_tooltip {
+      color: #000;
+      background-color: #fff;
+      opacity: 0.5;
+      border-radius: 4px;
+      font-size: 11px;
+      padding: 5px 15px;
+
+      @media (max-width: 425px) {
+        display: none;
+      }
     }
   }
 `;
