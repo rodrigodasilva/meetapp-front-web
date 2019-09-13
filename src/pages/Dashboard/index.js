@@ -11,7 +11,6 @@ import {
   FaAngleDoubleLeft,
 } from 'react-icons/fa';
 import { Spinner } from 'react-activity';
-import ReactTooltip from 'react-tooltip';
 
 import {
   requestDetailsMeetup,
@@ -140,20 +139,14 @@ export default function Dashboard() {
 
       <Pagination>
         <button type="button" disabled={page < 2} onClick={() => setPage(1)}>
-          <p data-tip="Start" data-for="start">
-            <FaAngleDoubleLeft size={25} />
-          </p>
-          <ReactTooltip place="left" type="light" effect="solid" id="start" />
+          <FaAngleDoubleLeft size={25} />
         </button>
         <button
           type="button"
           disabled={page < 2}
           onClick={() => handlePrevPage()}
         >
-          <p data-tip="Previous" data-for="previous">
-            <FaAngleLeft size={25} />
-          </p>
-          <ReactTooltip place="top" type="light" effect="solid" id="previous" />
+          <FaAngleLeft size={25} />
         </button>
 
         <span>Page {page}</span>
@@ -163,20 +156,14 @@ export default function Dashboard() {
           disabled={checkIfIsEndPage}
           onClick={() => handleNextPage()}
         >
-          <p data-tip="Next" data-for="next">
-            <FaAngleRight size={25} />
-          </p>
-          <ReactTooltip place="top" type="light" effect="solid" id="next" />
+          <FaAngleRight size={25} />
         </button>
         <button
           type="button"
           disabled={checkIfIsEndPage}
           onClick={() => setPage(lastPage)}
         >
-          <p data-tip="Last" data-for="last">
-            <FaAngleDoubleRight size={25} />
-          </p>
-          <ReactTooltip place="right" type="light" effect="solid" id="last" />
+          <FaAngleDoubleRight size={25} />
         </button>
       </Pagination>
     </Container>

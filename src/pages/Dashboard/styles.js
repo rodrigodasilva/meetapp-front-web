@@ -200,14 +200,17 @@ export const Pagination = styled.div`
   }
 
   button {
-    color: ${lighten(0.05, '#f94d6a')};
+    /* color: ${lighten(0.05, '#f94d6a')}; */
+    color: #fff;
     border: none;
     background: none;
+    margin: 0 3px;
 
     transition: background 0.2s;
 
     &:hover {
-      color: #fff;
+      /* color: #fff; */
+      color: ${lighten(0.05, '#f94d6a')};
     }
 
     &:disabled {
@@ -216,24 +219,8 @@ export const Pagination = styled.div`
       /* display: none; */
 
       &:hover {
-        color: ${lighten(0.05, '#f94d6a')};
-      }
-
-      & > .__react_component_tooltip {
-        display: none;
-      }
-    }
-
-    .__react_component_tooltip {
-      color: #000;
-      background-color: #fff;
-      opacity: 0.5;
-      border-radius: 4px;
-      font-size: 11px;
-      padding: 5px 15px;
-
-      @media (max-width: 425px) {
-        display: none;
+        /* color: ${lighten(0.05, '#f94d6a')}; */
+        color: #fff;
       }
     }
   }
