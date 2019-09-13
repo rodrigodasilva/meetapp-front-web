@@ -14,6 +14,7 @@ export const Content = styled.div`
   width: 100%;
   max-width: 315px;
   text-align: center;
+  margin: 15px;
 
   img {
     width: 41px;

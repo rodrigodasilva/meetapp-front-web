@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Container = styled.div`
+  margin: 0 auto;
   max-width: 940px;
   min-height: calc(100% - 130px);
   display: flex;

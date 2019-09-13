@@ -77,7 +77,7 @@ export const Container = styled.div`
           margin-right: 10px;
         }
 
-        @media (max-width: 360px) {
+        @media (max-width: 375px) {
           width: 100%;
           margin-top: 15px;
         }

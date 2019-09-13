@@ -24,6 +24,11 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
 
+    a {
+      position: fixed;
+      z-index: 3;
+    }
+
     .buttonGoBack {
       background: none;
       border: none;
@@ -33,7 +38,7 @@ export const Content = styled.div`
       color: #fff;
       font-weight: bold;
       font-size: 14px;
-      margin-left: 25px;
+      margin-left: 50px;
 
       &:hover {
         opacity: 0.5;
