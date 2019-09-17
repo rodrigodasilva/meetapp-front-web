@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
-import { MdAddCircleOutline } from 'react-icons/md';
 import { Spinner } from 'react-activity';
 import * as Yup from 'yup';
 
@@ -74,10 +73,7 @@ function FormMeetup({ match }) {
             {loading ? (
               <Spinner color="#fff" size={14} />
             ) : (
-              <>
-                <MdAddCircleOutline size={20} color="#fff" />
-                {meetup ? 'Atualizar' : 'Salvar'} Meetup
-              </>
+              <>{meetup ? 'Atualizar' : 'Salvar'} Meetup</>
             )}
           </Button>
         </div>

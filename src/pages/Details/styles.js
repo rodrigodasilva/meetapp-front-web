@@ -22,7 +22,7 @@ export const Container = styled.div`
     align-items: center;
     margin-bottom: 30px;
 
-    h1 {
+    > h1 {
       font-size: 32px;
       font-weight: bold;
       color: #fff;
@@ -36,10 +36,14 @@ export const Container = styled.div`
       }
     }
 
-    .meetupIsAlready {
+    div h2 {
       color: #d44059;
-      font-size: 28px;
+      font-size: 24px;
       font-weight: bold;
+
+      @media (max-width: 530px) {
+        font-size: 20px;
+      }
     }
 
     div {
@@ -58,10 +62,6 @@ export const Container = styled.div`
     }
 
     @media (max-width: 380px) {
-      div svg {
-        display: none;
-      }
-
       div button {
         font-size: 14px;
       }
@@ -80,10 +80,12 @@ export const Container = styled.div`
           width: 100%;
         }
       }
+    }
 
-      div svg {
-        display: block;
-      }
+    div.alreadyHappened {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
     }
   }
 
@@ -101,6 +103,11 @@ export const Container = styled.div`
       height: 200px;
     }
 
+    @media (max-width: 360px) {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+
     @media (max-width: 250px) {
       height: 160px;
     }
@@ -110,7 +117,7 @@ export const Container = styled.div`
     font-size: 18px;
     color: #fff;
     margin-bottom: 30px;
-    line-height: 32px;
+    line-height: 24px;
   }
 
   footer {
@@ -129,6 +136,7 @@ export const Container = styled.div`
 
       svg {
         margin-right: 10px;
+        min-width: 15px;
       }
     }
 
@@ -138,6 +146,13 @@ export const Container = styled.div`
 
       time {
         margin-bottom: 10px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      time,
+      address {
+        font-size: 14px;
       }
     }
   }
@@ -159,10 +174,6 @@ export const Button = styled.button`
   width: ${props => (props.primary ? '116px' : '120px')};
   background: ${props => (props.primary ? '#4DBAF9' : '#D44059')};
 
-  svg {
-    margin-right: 10px;
-  }
-
   &:hover {
     background: ${props =>
       props.primary ? darken(0.06, '#4DBAF9') : darken(0.03, '#D44059')};
@@ -170,7 +181,7 @@ export const Button = styled.button`
 
   @media (max-width: 760px) {
     margin-left: 0;
-    height: 38px;
-    font-size: 16px;
+    height: 34px;
+    font-size: 14px;
   }
 `;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
-import { MdAddCircleOutline } from 'react-icons/md';
 import { Spinner } from 'react-activity';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
@@ -43,14 +42,7 @@ export default function Profile() {
 
         <div>
           <button type="submit">
-            {loading ? (
-              <Spinner color="#fff" size={14} />
-            ) : (
-              <>
-                <MdAddCircleOutline size={20} color="#fff" />
-                Salvar perfil
-              </>
-            )}
+            {loading ? <Spinner color="#fff" size={14} /> : <>Salvar perfil</>}
           </button>
         </div>
       </Form>

@@ -64,4 +64,9 @@ export const Container = styled.div`
     margin-left: -30px;
     margin-right: -30px;
   }
+
+  @media (max-width: 360px) {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
 `;

@@ -51,10 +51,6 @@ export const Container = styled.div`
       &:hover {
         background: ${darken(0.03, '#F94D6A')};
       }
-
-      svg {
-        margin-right: 10px;
-      }
     }
 
     @media (max-width: 555px) {
@@ -67,24 +63,19 @@ export const Container = styled.div`
       }
     }
 
+    @media (max-width: 530px) {
+      button {
+        height: 34px;
+      }
+    }
+
     @media (max-width: 500px) {
       h1 {
         font-size: 28px;
       }
     }
 
-    @media (max-width: 400px) {
-      a {
-        width: 100px;
-
-        button {
-          width: 100px;
-          height: 38px;
-        }
-      }
-    }
-
-    @media (max-width: 380px) {
+    @media (max-width: 390px) {
       flex-direction: column;
 
       h1 {
@@ -97,10 +88,6 @@ export const Container = styled.div`
 
         button {
           width: 100%;
-
-          span + span {
-            /* display: none; */
-          }
         }
       }
     }
@@ -160,9 +147,17 @@ export const Meetup = styled.li`
     align-items: center;
 
     span {
-      margin-right: 30px;
+      margin-right: 20px;
       font-size: 16px;
       color: rgba(255, 255, 255, 0.6);
+
+      @media (max-width: 555px) {
+        font-size: 14px;
+      }
+
+      @media (max-width: 330px) {
+        font-size: 12px;
+      }
     }
 
     button {
@@ -184,6 +179,10 @@ export const Meetup = styled.li`
       justify-content: space-between;
     }
   }
+
+  @media (max-width: 365px) {
+    padding: 20px 15px;
+  }
 `;
 
 export const Pagination = styled.div`
@@ -193,11 +192,34 @@ export const Pagination = styled.div`
   align-items: center;
   margin: 20px auto;
 
+  button:nth-child(2) {
+    margin-right: 15px;
+  }
+
+  button:nth-child(5) {
+    margin-left: 15px;
+  }
+
   span {
     color: #fff;
     font-weight: bold;
-    margin: 0 15px;
+
   }
+
+  @media (max-width: 310px) {
+    span:nth-child(3){
+      display: none;
+    }
+
+    button:nth-child(2) {
+      margin-right: 5px;
+    }
+
+    button:nth-child(5) {
+      margin-left: 5px;
+    }
+  }
+
 
   button {
     /* color: ${lighten(0.05, '#f94d6a')}; */

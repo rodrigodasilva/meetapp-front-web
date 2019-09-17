@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { parseISO, format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
-import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
+import { MdChevronRight } from 'react-icons/md';
 import {
   FaAngleRight,
   FaAngleLeft,
@@ -33,7 +33,7 @@ export default function Dashboard() {
   const [meetups, setMeetups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [checkIfIsEndPage, setCheckIfIsLastPage] = useState(false);
+  const [checkIfIsLastPage, setCheckIfIsLastPage] = useState(false);
   const [lastPage, setLastPage] = useState();
 
   const dispatch = useDispatch();
@@ -78,7 +78,7 @@ export default function Dashboard() {
     }
 
     loadMeetups();
-  }, [checkIfIsEndPage, loading, page]);
+  }, [checkIfIsLastPage, loading, page]);
 
   function handlePrevPage() {
     setPage(page > 1 ? page - 1 : 1);
@@ -100,7 +100,6 @@ export default function Dashboard() {
         <h1>Meus meetups</h1>
         <Link to="/new">
           <button type="button">
-            <MdAddCircleOutline size={20} color="#fff" />
             <span>Novo &nbsp;</span> <span> meetup</span>
           </button>
         </Link>
@@ -149,18 +148,19 @@ export default function Dashboard() {
           <FaAngleLeft size={25} />
         </button>
 
-        <span>Page {page}</span>
+        <span>Page&nbsp;</span>
+        <span>{page}</span>
 
         <button
           type="button"
-          disabled={checkIfIsEndPage}
+          disabled={checkIfIsLastPage || meetups.length === 0}
           onClick={() => handleNextPage()}
         >
           <FaAngleRight size={25} />
         </button>
         <button
           type="button"
-          disabled={checkIfIsEndPage}
+          disabled={checkIfIsLastPage || meetups.length === 0}
           onClick={() => setPage(lastPage)}
         >
           <FaAngleDoubleRight size={25} />

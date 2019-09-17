@@ -57,6 +57,7 @@ export const Container = styled.div`
         background: #f94d6a;
         border: 0;
         border-radius: 4px;
+        margin-top: 15px;
 
         transition: background 0.2s;
 
@@ -73,13 +74,8 @@ export const Container = styled.div`
           background: ${darken(0.03, '#F94D6A')};
         }
 
-        svg {
-          margin-right: 10px;
-        }
-
         @media (max-width: 375px) {
           width: 100%;
-          margin-top: 15px;
         }
       }
     }

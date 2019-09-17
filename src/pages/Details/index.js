@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { MdDateRange, MdLocationOn, MdEdit, MdCancel } from 'react-icons/md';
+import { MdDateRange, MdLocationOn } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
@@ -43,25 +43,23 @@ function Details({ match }) {
       <header>
         <h1>{meetup.title}</h1>
 
-        <div>
-          {meetup.past ? (
-            <h1 className="meetupIsAlready">Meetup já aconteceu!</h1>
-          ) : (
-            <>
-              <Link to={`/edit/${meetup.id}`}>
-                <Button type="button" primary>
-                  <MdEdit size={20} color="#fff" />
-                  Editar
-                </Button>
-              </Link>
-
-              <Button type="button" onClick={handleCancelMeetup}>
-                <MdCancel size={20} color="#fff" />
-                Cancelar
+        {meetup.past ? (
+          <div className="alreadyHappened">
+            <h2>Meetup já aconteceu!</h2>
+          </div>
+        ) : (
+          <div>
+            <Link to={`/edit/${meetup.id}`}>
+              <Button type="button" primary>
+                Editar
               </Button>
-            </>
-          )}
-        </div>
+            </Link>
+
+            <Button type="button" onClick={handleCancelMeetup}>
+              Cancelar
+            </Button>
+          </div>
+        )}
       </header>
 
       <img src={meetup.banner.url} alt="Banner" />

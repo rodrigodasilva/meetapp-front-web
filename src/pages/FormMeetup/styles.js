@@ -151,17 +151,13 @@ export const Button = styled.button`
 
   height: 42px;
   width: 180px;
+  margin-top: 15px;
   border: 0;
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
   background: #f94d6a;
-  margin-top: 10px;
-
-  svg {
-    margin-right: 10px;
-  }
 
   &:hover {
     background: ${darken(0.06, '#F94D6A')};
@@ -171,6 +167,5 @@ export const Button = styled.button`
     width: 100%;
     font-size: 16px;
     height: 38px;
-    margin-top: 20px;
   }
 `;

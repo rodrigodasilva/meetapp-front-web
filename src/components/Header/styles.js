@@ -57,6 +57,8 @@ export const Content = styled.div`
   }
 
   @media (max-width: 529px) {
+    height: 65px;
+
     .profile {
       display: none;
     }
@@ -72,6 +74,10 @@ export const Content = styled.div`
     position: fixed;
     z-index: 4;
     right: 30px;
+  }
+
+  @media (max-width: 360px) {
+    right: 20px;
   }
 
   .menu.open + nav {
@@ -104,7 +110,7 @@ export const Content = styled.div`
   .menu.open + nav button {
     font-weight: bold;
     margin-left: 0;
-    font-size: 18px;
+    font-size: 16px;
   }
 `;
 
@@ -151,7 +157,7 @@ export const Profile = styled.nav`
 
   button {
     width: 71px;
-    height: 42px;
+    height: 34px;
     background: #d44059;
     border: 0;
     border-radius: 4px;
