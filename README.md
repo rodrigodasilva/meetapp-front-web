@@ -14,7 +14,7 @@ Meetapp Web
 
 <div align="center">
 
-![](src/assets/meetapp_mobile.png)
+![](src/assets/meetapp-web.gif)
 
 </div>
 
