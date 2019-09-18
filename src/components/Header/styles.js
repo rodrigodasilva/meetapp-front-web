@@ -157,7 +157,7 @@ export const Profile = styled.nav`
 
   button {
     width: 71px;
-    height: 34px;
+    height: 42px;
     background: #d44059;
     border: 0;
     border-radius: 4px;
@@ -167,6 +167,10 @@ export const Profile = styled.nav`
 
     &:hover {
       background: ${darken(0.03, '#d44059')};
+    }
+
+    @media (max-width: 530px) {
+      height: 32px;
     }
   }
 `;
