@@ -99,7 +99,6 @@ export const ContainerMeetups = styled.div`
   justify-content: center;
   align-items: flex-start;
   flex: 1;
-  /* text-align: center; */
 
   ul {
     width: 100%;
@@ -203,11 +202,10 @@ export const Pagination = styled.div`
   span {
     color: #fff;
     font-weight: bold;
-
   }
 
   @media (max-width: 310px) {
-    span:nth-child(3){
+    span:nth-child(3) {
       display: none;
     }
 
@@ -220,9 +218,7 @@ export const Pagination = styled.div`
     }
   }
 
-
   button {
-    /* color: ${lighten(0.05, '#f94d6a')}; */
     color: #fff;
     border: none;
     background: none;
@@ -231,17 +227,14 @@ export const Pagination = styled.div`
     transition: background 0.2s;
 
     &:hover {
-      /* color: #fff; */
       color: ${lighten(0.05, '#f94d6a')};
     }
 
     &:disabled {
       opacity: 0.2;
       cursor: not-allowed;
-      /* display: none; */
 
       &:hover {
-        /* color: ${lighten(0.05, '#f94d6a')}; */
         color: #fff;
       }
     }

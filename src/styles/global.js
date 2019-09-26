@@ -57,7 +57,4 @@ export default createGlobalStyle`
       background: #dc3725f2;
   }
 
-
-
-
 `;

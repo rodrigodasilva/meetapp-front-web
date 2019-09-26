@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Form, Input } from '@rocketseat/unform';
 import { Spinner } from 'react-activity';
 import * as Yup from 'yup';
@@ -81,5 +82,13 @@ function FormMeetup({ match }) {
     </Container>
   );
 }
+
+FormMeetup.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default FormMeetup;
