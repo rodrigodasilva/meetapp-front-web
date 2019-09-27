@@ -12,7 +12,7 @@ import {
 } from '~/store/modules/meetup/actions';
 
 export function requestDetailsMeetup({ payload }) {
-  history.push(`/details/${payload.meetup.id}`);
+  history.push(`/meetup/details/${payload.meetup.id}`);
 }
 
 export function* createMeetup({ payload }) {

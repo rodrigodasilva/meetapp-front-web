@@ -49,7 +49,7 @@ function Details({ match }) {
           </div>
         ) : (
           <div>
-            <Link to={`/edit/${meetup.id}`}>
+            <Link to={`/meetup/edit/${meetup.id}`}>
               <Button type="button" primary>
                 Editar
               </Button>
