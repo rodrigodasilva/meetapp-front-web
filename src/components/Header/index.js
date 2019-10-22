@@ -7,14 +7,25 @@ import { signOut } from '~/store/modules/auth/actions';
 
 import logo from '~/assets/logo.png';
 
-import { Container, Content, Profile, ButtonMenu } from './styles';
+import {
+  Container,
+  Content,
+  ContentLeft,
+  Logo,
+  ButtonGoBack,
+  ContentRight,
+  Profile,
+  ButtonLogout,
+  ButtonMenu,
+} from './styles';
 
 import history from '~/services/history';
 
 export default function Header() {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile);
-  const checkCurrentPage = useSelector(state => state.currentPage.page);
+
+  const currentPage = window.location.pathname;
 
   const [toggle, setToggle] = useState(false);
 
@@ -26,73 +37,66 @@ export default function Header() {
     history.goBack();
   }
 
-  function handleClickMenu() {
+  function handleToggleMenu() {
     setToggle(!toggle);
   }
 
   return (
     <Container>
       <Content>
-        <aside>
+        <ContentLeft>
           <Link to="/dashboard">
-            <img src={logo} alt="MeetApp" />
+            <Logo src={logo} alt="MeetApp" />
           </Link>
-          {checkCurrentPage !== 'Dashboard' && (
-            <button type="button" onClick={goBack} className="buttonGoBack">
-              <MdChevronLeft size={30} color="#fff" />
-              Voltar
-            </button>
-          )}
-        </aside>
 
-        <ButtonMenu
-          type="button"
-          className={toggle ? 'menu open' : 'menu'}
-          onClick={handleClickMenu}
-        >
+          <ButtonGoBack
+            type="button"
+            onClick={goBack}
+            className={currentPage === '/dashboard' ? 'hidden' : ''}
+          >
+            <MdChevronLeft size={30} color="#fff" />
+            Voltar
+          </ButtonGoBack>
+        </ContentLeft>
+
+        <ButtonMenu type="button" onClick={handleToggleMenu}>
           <MdMenu size={35} color="#fff" />
         </ButtonMenu>
 
-        <Profile className="profile">
-          {!toggle ? (
-            <>
-              <div>
-                <strong>{profile.name}</strong>
-                <Link to="/profile">Meu Perfil</Link>
-              </div>
-
-              <button type="button" onClick={handleSignOut}>
-                Sair
-              </button>
-            </>
-          ) : (
-            <>
-              <div>
-                <Link
-                  to="/dashboard"
-                  onClick={() => setToggle(false)}
-                  className={checkCurrentPage === 'Dashboard' ? 'active' : ''}
-                >
-                  Dashboard
-                </Link>
-              </div>
-
-              <div>
-                <Link
-                  to="/profile"
-                  onClick={() => setToggle(false)}
-                  className={checkCurrentPage === 'Profile' ? 'active' : ''}
-                >
-                  Meu Perfil
-                </Link>
-              </div>
-
-              <button type="button" onClick={handleSignOut}>
-                Sair
-              </button>
-            </>
+        <ContentRight className={toggle ? 'menuMobile' : ''}>
+          {toggle && (
+            <Link
+              to="/dashboard"
+              onClick={() => setToggle(false)}
+              className={
+                currentPage === '/dashboard'
+                  ? 'LinkMenuMobile active'
+                  : 'LinkMenuMobile'
+              }
+            >
+              Dashboard
+            </Link>
           )}
-        </Profile>
+
+          <Profile
+            to="/profile"
+            onClick={() => setToggle(false)}
+            className={currentPage === '/profile' ? 'active' : ''}
+          >
+            <strong className={toggle ? 'hidden' : ''}>{profile.name}</strong>
+            <span className={toggle ? 'LinkMenuMobile' : ''} to="/profile">
+              Meu Perfil
+            </span>
+          </Profile>
+
+          <ButtonLogout
+            type="button"
+            onClick={handleSignOut}
+            className={toggle ? 'ButtonMenuMobile' : ''}
+          >
+            Sair
+          </ButtonLogout>
+        </ContentRight>
       </Content>
     </Container>
   );

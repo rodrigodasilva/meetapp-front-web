@@ -13,8 +13,6 @@ import {
   updateMeetupRequest,
 } from '~/store/modules/meetup/actions';
 
-import { setCurrentPage } from '~/store/modules/currentPage/action';
-
 import history from '~/services/history';
 
 import { Container, Button } from './styles';
@@ -43,8 +41,6 @@ function FormMeetup({ match }) {
         if (idParamPage !== meetup.id) history.push('/');
       }
     }
-
-    dispatch(setCurrentPage('New'));
   }, [dispatch, idParamPage, meetup]);
 
   function handleCreateMeetup(data) {

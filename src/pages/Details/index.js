@@ -9,7 +9,6 @@ import pt from 'date-fns/locale/pt';
 import { Container, Button } from './styles';
 
 import { cancelMeetup } from '~/store/modules/meetup/actions';
-import { setCurrentPage } from '~/store/modules/currentPage/action';
 
 import history from '~/services/history';
 
@@ -27,8 +26,6 @@ function Details({ match }) {
       locale: pt,
     }
   );
-
-  dispatch(setCurrentPage('Details'));
 
   useEffect(() => {
     if (idParamPage !== meetup.id) history.push('/');

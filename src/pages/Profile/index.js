@@ -4,7 +4,6 @@ import { Form, Input } from '@rocketseat/unform';
 import { Spinner } from 'react-activity';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
-import { setCurrentPage } from '~/store/modules/currentPage/action';
 
 import { Container } from './styles';
 
@@ -13,8 +12,6 @@ export default function Profile() {
   const loading = useSelector(state => state.user.loading);
 
   const dispatch = useDispatch();
-
-  dispatch(setCurrentPage('Profile'));
 
   function handleSubmit(data) {
     dispatch(updateProfileRequest(data));

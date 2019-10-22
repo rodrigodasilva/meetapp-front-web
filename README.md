@@ -53,7 +53,12 @@ Pré-requisitos:
 - Yarn/Npm
 - [Back-end](https://github.com/rodrigodasilva/backend-meetapp) da aplicação rodando
 
-Tendo isso, podemos iniciar a aplicação
+
+Tendo isso, rodamos o comando yarn para fazer a instalação das dependências passadas no package.json
+
+> yarn	
+
+E, iniciamos a aplicação
 
 > yarn start
 

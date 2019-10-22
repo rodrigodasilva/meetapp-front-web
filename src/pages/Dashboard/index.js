@@ -17,8 +17,6 @@ import {
   clearMeetup,
 } from '~/store/modules/meetup/actions';
 
-import { setCurrentPage } from '~/store/modules/currentPage/action';
-
 import {
   Container,
   Meetup,
@@ -39,8 +37,6 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   dispatch(clearMeetup());
-
-  dispatch(setCurrentPage('Dashboard'));
 
   useEffect(() => {
     async function loadMeetups() {
@@ -132,7 +128,7 @@ export default function Dashboard() {
 
       {meetups.length === 0 && !loading && (
         <ContainerEmpty>
-          <h1>Nenhum meetup cadastrado!</h1>
+          <h1>Nenhum meetup cadastrado</h1>
         </ContainerEmpty>
       )}
 
