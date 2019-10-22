@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import { darken, lighten } from 'polished';
 
+import Button from '~/components/Button';
+
 export const Container = styled.div`
   margin: 0 auto;
   max-width: 940px;
@@ -93,6 +95,8 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const ButtonAdd = styled(Button)``;
 
 export const ContainerMeetups = styled.div`
   display: flex;

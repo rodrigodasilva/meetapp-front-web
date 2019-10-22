@@ -19,6 +19,7 @@ import {
 
 import {
   Container,
+  ButtonAdd,
   Meetup,
   ContainerMeetups,
   ContainerEmpty,
@@ -95,9 +96,9 @@ export default function Dashboard() {
       <header>
         <h1>Meus meetups</h1>
         <Link to="/meetup/new">
-          <button type="button">
+          <ButtonAdd type="button">
             <span>Novo &nbsp;</span> <span> meetup</span>
-          </button>
+          </ButtonAdd>
         </Link>
       </header>
 
