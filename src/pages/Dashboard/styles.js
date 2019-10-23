@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { darken, lighten } from 'polished';
+import { lighten } from 'polished';
 
 import Button from '~/components/Button';
 
@@ -14,98 +15,86 @@ export const Container = styled.div`
   @media (max-width: 980px) {
     padding: 0 30px;
   }
+`;
 
-  header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+export const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 
-    h1 {
-      color: #fff;
-      font-size: 32px;
-      font-weight: bold;
-
-      @media (max-width: 530px) {
-        font-size: 28px;
-      }
-    }
-
-    button {
-      height: 42px;
-      width: 172px;
-      background: #f94d6a;
-      border: 0;
-      border-radius: 4px;
-
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-
-      font-weight: bold;
-      color: #fff;
-      font-size: 16px;
-
-      transition: background 0.2s;
-
-      &:hover {
-        background: ${darken(0.03, '#F94D6A')};
-      }
-    }
-
-    @media (max-width: 555px) {
-      button {
-        width: 120px;
-
-        span + span {
-          display: none;
-        }
-      }
-    }
-
-    @media (max-width: 530px) {
-      button {
-        height: 34px;
-      }
-    }
-
-    @media (max-width: 500px) {
-      h1 {
-        font-size: 28px;
-      }
-    }
-
-    @media (max-width: 390px) {
-      flex-direction: column;
-
-      h1 {
-        margin-bottom: 15px;
-        text-align: center;
-      }
-
-      a {
-        width: 100%;
-
-        button {
-          width: 100%;
-        }
-      }
-    }
+  & > h1 {
+    color: #fff;
+    min-width: 200px;
+    flex: 1;
+    margin-bottom: 20px;
   }
 `;
 
-export const ButtonAdd = styled(Button)``;
+export const LinkAdd = styled(Link)`
+  min-width: 172px;
+
+  @media (max-width: 500px) {
+    flex: 1;
+  }
+`;
+
+export const ButtonAdd = styled(Button)`
+  @media (max-width: 425px) {
+    height: 35px;
+  }
+`;
 
 export const ContainerMeetups = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 
-  ul {
-    width: 100%;
+  flex: 1;
+`;
+
+export const CardMeetup = styled.div`
+  background: rgba(0, 0, 0, 0.2);
+  padding: 20px 30px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+
+  opacity: ${props => (props.past ? '0.5' : '1')};
+
+  & > .title {
+    font-size: 18px !important;
+    color: #fff;
+    margin-right: 10px;
+    padding: 5px 0;
+    flex: 1;
+  }
+
+  & > .date {
+    margin-right: 30px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+
+    @media (max-width: 555px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 330px) {
+      font-size: 12px;
+    }
+  }
+
+  & > .btnDetails {
+    background: none;
+    border: 0;
+    position: absolute;
+    right: 15px;
   }
 `;
 
@@ -116,7 +105,7 @@ export const ContainerEmpty = styled.div`
   flex: 1;
   text-align: center;
 
-  h1 {
+  & > h1 {
     color: #fff;
     opacity: 0.5;
     font-weight: bold;
@@ -128,66 +117,6 @@ export const ContainerEmpty = styled.div`
   }
 `;
 
-export const Meetup = styled.li`
-  background: rgba(0, 0, 0, 0.2);
-  padding: 20px 30px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  opacity: ${props => (props.past ? '0.5' : '1')};
-
-  strong {
-    font-size: 18px !important;
-    color: #fff;
-    margin-right: 10px;
-  }
-
-  div {
-    display: flex;
-    align-items: center;
-
-    span {
-      margin-right: 20px;
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.6);
-
-      @media (max-width: 555px) {
-        font-size: 14px;
-      }
-
-      @media (max-width: 330px) {
-        font-size: 12px;
-      }
-    }
-
-    button {
-      background: none;
-      border: 0;
-    }
-  }
-
-  @media (max-width: 555px) {
-    flex-direction: column;
-
-    strong {
-      margin-bottom: 5px;
-      align-self: flex-start;
-    }
-
-    div {
-      width: 100%;
-      justify-content: space-between;
-    }
-  }
-
-  @media (max-width: 365px) {
-    padding: 20px 15px;
-  }
-`;
-
 export const Pagination = styled.div`
   width: 100%;
   display: flex;
@@ -195,52 +124,38 @@ export const Pagination = styled.div`
   align-items: center;
   margin: 20px auto;
 
-  button:nth-child(2) {
-    margin-right: 15px;
-  }
+  & > .pageDescription {
+    margin: 0 10px;
 
-  button:nth-child(5) {
-    margin-left: 15px;
-  }
-
-  span {
-    color: #fff;
-    font-weight: bold;
-  }
-
-  @media (max-width: 310px) {
-    span:nth-child(3) {
-      display: none;
+    & span {
+      color: #fff;
+      font-weight: bold;
     }
 
-    button:nth-child(2) {
-      margin-right: 5px;
-    }
-
-    button:nth-child(5) {
-      margin-left: 5px;
+    @media (max-width: 310px) {
+      & .pageName {
+        display: none;
+      }
     }
   }
+`;
 
-  button {
-    color: #fff;
-    border: none;
-    background: none;
-    margin: 0 3px;
+export const ButtonPagination = styled.button`
+  color: #fff;
+  border: none;
+  background: none;
+  margin: 0 5px;
 
-    transition: background 0.2s;
+  &:hover {
+    color: ${lighten(0.05, '#f94d6a')};
+  }
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
 
     &:hover {
-      color: ${lighten(0.05, '#f94d6a')};
-    }
-
-    &:disabled {
-      opacity: 0.2;
-      cursor: not-allowed;
-
-      &:hover {
-        color: #fff;
-      }
+      color: #fff;
     }
   }
 `;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { parseISO, format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
@@ -19,11 +18,14 @@ import {
 
 import {
   Container,
+  Header,
+  LinkAdd,
   ButtonAdd,
-  Meetup,
+  CardMeetup,
   ContainerMeetups,
   ContainerEmpty,
   Pagination,
+  ButtonPagination,
 } from './styles';
 
 import api from '~/services/api';
@@ -93,14 +95,14 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <header>
+      <Header>
         <h1>Meus meetups</h1>
-        <Link to="/meetup/new">
+        <LinkAdd to="/meetup/new">
           <ButtonAdd type="button">
-            <span>Novo &nbsp;</span> <span> meetup</span>
+            <span>Novo meetup</span>
           </ButtonAdd>
-        </Link>
-      </header>
+        </LinkAdd>
+      </Header>
 
       {loading && (
         <ContainerEmpty>
@@ -110,20 +112,21 @@ export default function Dashboard() {
 
       {meetups.length >= 1 && !loading && (
         <ContainerMeetups>
-          <ul>
-            {meetups.map(meetup => (
-              <Meetup key={meetup.id} past={meetup.past}>
-                <strong>{meetup.title}</strong>
+          {meetups.map(meetup => (
+            <CardMeetup key={meetup.id} past={meetup.past}>
+              <strong className="title">{meetup.title}</strong>
 
-                <div>
-                  <span>{meetup.dateFormatted}</span>
-                  <button onClick={() => handleDetails(meetup)} type="button">
-                    <MdChevronRight size={28} color="#fff" />
-                  </button>
-                </div>
-              </Meetup>
-            ))}
-          </ul>
+              <span className="date">{meetup.dateFormatted}</span>
+
+              <button
+                onClick={() => handleDetails(meetup)}
+                type="button"
+                className="btnDetails"
+              >
+                <MdChevronRight size={35} color="#fff" />
+              </button>
+            </CardMeetup>
+          ))}
         </ContainerMeetups>
       )}
 
@@ -134,34 +137,40 @@ export default function Dashboard() {
       )}
 
       <Pagination>
-        <button type="button" disabled={page < 2} onClick={() => setPage(1)}>
+        <ButtonPagination
+          type="button"
+          disabled={page < 2}
+          onClick={() => setPage(1)}
+        >
           <FaAngleDoubleLeft size={25} />
-        </button>
-        <button
+        </ButtonPagination>
+        <ButtonPagination
           type="button"
           disabled={page < 2}
           onClick={() => handlePrevPage()}
         >
           <FaAngleLeft size={25} />
-        </button>
+        </ButtonPagination>
 
-        <span>Page&nbsp;</span>
-        <span>{page}</span>
+        <div className="pageDescription">
+          <span className="pageName">Page&nbsp;</span>
+          <span>{page}</span>
+        </div>
 
-        <button
+        <ButtonPagination
           type="button"
           disabled={checkIfIsLastPage || meetups.length === 0}
           onClick={() => handleNextPage()}
         >
           <FaAngleRight size={25} />
-        </button>
-        <button
+        </ButtonPagination>
+        <ButtonPagination
           type="button"
           disabled={checkIfIsLastPage || meetups.length === 0}
           onClick={() => setPage(lastPage)}
         >
           <FaAngleDoubleRight size={25} />
-        </button>
+        </ButtonPagination>
       </Pagination>
     </Container>
   );
