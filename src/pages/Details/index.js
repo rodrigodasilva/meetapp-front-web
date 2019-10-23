@@ -6,7 +6,7 @@ import { MdDateRange, MdLocationOn } from 'react-icons/md';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
-import { Container, Button } from './styles';
+import { Container, Header, Btn, Banner, DateDescription } from './styles';
 
 import { cancelMeetup } from '~/store/modules/meetup/actions';
 
@@ -37,32 +37,34 @@ function Details({ match }) {
 
   return (
     <Container>
-      <header>
-        <h1>{meetup.title}</h1>
+      <Header>
+        <h1 className="title">{meetup.title}</h1>
 
         {meetup.past ? (
-          <div className="alreadyHappened">
-            <h2>Meetup já aconteceu!</h2>
-          </div>
+          <h2 className="text-already-happened">Meetup já aconteceu!</h2>
         ) : (
-          <div>
+          <div className="column--buttons">
             <Link to={`/meetup/edit/${meetup.id}`}>
-              <Button type="button" primary>
+              <Btn type="button" className="btn--primary">
                 Editar
-              </Button>
+              </Btn>
             </Link>
 
-            <Button type="button" onClick={handleCancelMeetup}>
+            <Btn
+              type="button"
+              onClick={handleCancelMeetup}
+              className="btn--danger"
+            >
               Cancelar
-            </Button>
+            </Btn>
           </div>
         )}
-      </header>
+      </Header>
 
-      <img src={meetup.banner.url} alt="Banner" />
-      <span>{meetup.description}</span>
+      <Banner src={meetup.banner.url} alt="Banner" />
+      <span className="description">{meetup.description}</span>
 
-      <footer>
+      <DateDescription>
         <time>
           <MdDateRange size={20} color="rgba(255, 255, 255, 0.6)" />
           {dateFormatted}
@@ -71,7 +73,7 @@ function Details({ match }) {
           <MdLocationOn size={20} color="rgba(255, 255, 255, 0.6)" />
           {meetup.location}
         </address>
-      </footer>
+      </DateDescription>
     </Container>
   );
 }
