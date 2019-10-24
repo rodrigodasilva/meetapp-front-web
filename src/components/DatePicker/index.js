@@ -6,6 +6,8 @@ import pt from 'date-fns/locale/pt';
 
 import { useField } from '@rocketseat/unform';
 
+import { Container } from './styles';
+
 export default function DatePickerMeetup({ name, placeholder }) {
   const ref = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
@@ -26,7 +28,7 @@ export default function DatePickerMeetup({ name, placeholder }) {
   }, [ref.current, fieldName]); // eslint-disable-line
 
   return (
-    <>
+    <Container>
       <DatePicker
         name={fieldName}
         selected={selected}
@@ -43,7 +45,7 @@ export default function DatePickerMeetup({ name, placeholder }) {
         locale={pt}
       />
       {error && <span>Insira uma data</span>}
-    </>
+    </Container>
   );
 }
 

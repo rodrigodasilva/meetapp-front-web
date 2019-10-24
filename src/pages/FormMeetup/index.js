@@ -15,7 +15,7 @@ import {
 
 import history from '~/services/history';
 
-import { Container, Button } from './styles';
+import { Container, FormUnform, ButtonSubmit } from './styles';
 
 const schema = Yup.object().shape({
   banner_id: Yup.number().required('Insira uma imagem'),
@@ -53,7 +53,7 @@ function FormMeetup({ match }) {
 
   return (
     <Container>
-      <Form
+      <FormUnform
         onSubmit={meetup ? handleUpdateMeetup : handleCreateMeetup}
         initialData={initialData}
         schema={schema}
@@ -65,16 +65,10 @@ function FormMeetup({ match }) {
         <DatePickerMeetup name="date" placeholder="Data do meetup" />
         <Input name="location" type="text" placeholder="Localização" />
 
-        <div className="divButtonSave">
-          <Button type="submit">
-            {loading ? (
-              <Spinner color="#fff" size={14} />
-            ) : (
-              <>{meetup ? 'Atualizar' : 'Salvar'} Meetup</>
-            )}
-          </Button>
-        </div>
-      </Form>
+        <ButtonSubmit type="submit" loading={loading}>
+          {meetup ? 'Atualizar' : 'Salvar'} Meetup
+        </ButtonSubmit>
+      </FormUnform>
     </Container>
   );
 }
