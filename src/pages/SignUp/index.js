@@ -5,6 +5,7 @@ import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
 import logo from '~/assets/logo.png';
+import Button from '~/components/Button';
 
 import { signUpRequest } from '~/store/modules/auth/actions';
 
@@ -27,7 +28,7 @@ export default function SignUp() {
 
   return (
     <>
-      <img src={logo} alt="Gobarber" />
+      <img src={logo} alt="Gobarber" className="logo" />
 
       <Form onSubmit={handleSubmit} schema={schema}>
         <Input name="name" type="text" placeholder="Seu nome" />
@@ -38,7 +39,7 @@ export default function SignUp() {
           placeholder="Sua senha secreta"
         />
 
-        <button type="submit">Criar conta</button>
+        <Button type="submit">Criar conta</Button>
         <Link to="/">Já tenho login</Link>
       </Form>
     </>
