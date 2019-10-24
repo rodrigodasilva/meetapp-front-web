@@ -5,7 +5,7 @@ import { MdPhotoCamera } from 'react-icons/md';
 
 import api from '~/services/api';
 
-import { Container } from './styles';
+import { Container, Label, WithoutBanner } from './styles';
 
 function BannerInput() {
   const { defaultValue, registerField } = useField('banner');
@@ -40,14 +40,14 @@ function BannerInput() {
 
   return (
     <Container>
-      <label htmlFor="banner">
+      <Label htmlFor="banner">
         {preview ? (
           <img src={preview} alt="" />
         ) : (
-          <div>
+          <WithoutBanner>
             <MdPhotoCamera size={54} color="rgba(255, 255, 255, 0.3)" />
             <strong>Selecionar imagem</strong>
-          </div>
+          </WithoutBanner>
         )}
 
         <input
@@ -58,7 +58,7 @@ function BannerInput() {
           onChange={handleChange}
           ref={ref}
         />
-      </label>
+      </Label>
     </Container>
   );
 }
