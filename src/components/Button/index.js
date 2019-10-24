@@ -7,7 +7,7 @@ import { Container } from './styles';
 export default function Button({ children, loading, ...rest }) {
   return (
     <Container {...rest}>
-      {loading ? <Spinner size={10} color="#fff" /> : children}
+      {loading ? <Spinner size={15} color="#fff" /> : children}
     </Container>
   );
 }

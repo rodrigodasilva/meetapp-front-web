@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Spinner } from 'react-activity';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
@@ -44,8 +43,8 @@ export default function Profile() {
           placeholder="Confirme sua nova senha"
         />
 
-        <ButtonSubmit type="submit">
-          {loading ? <Spinner color="#fff" size={14} /> : <>Salvar perfil</>}
+        <ButtonSubmit type="submit" loading={loading}>
+          Salvar perfil
         </ButtonSubmit>
       </FormUnform>
     </Container>
