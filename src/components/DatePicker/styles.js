@@ -3,6 +3,31 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 
 export const Container = styled.div`
+  & input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    border: 0;
+    border-radius: 4px;
+    height: 50px;
+    padding: 0 15px;
+    color: #fff;
+    margin: 10px 0 0px;
+    font-size: 18px;
+
+    @media (max-width: 530px) {
+      font-size: 16px;
+      height: 44px;
+    }
+  }
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &:focus {
+    border-left: 3px solid #f94d6a;
+  }
+
   .react-datepicker-wrapper {
     width: 100%;
   }

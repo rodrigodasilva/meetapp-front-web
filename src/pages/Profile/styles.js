@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Form, Input } from '@rocketseat/unform';
+import { Form } from '@rocketseat/unform';
 import Button from '~/components/Button';
 
 export const Container = styled.div`
@@ -36,24 +36,6 @@ export const FormUnform = styled(Form)`
     height: 1px;
     background: rgba(255, 255, 255, 0.1);
     margin: 20px 0 20px;
-  }
-`;
-
-export const InputUnform = styled(Input)`
-  background: rgba(0, 0, 0, 0.1);
-  border: 0;
-  border-radius: 4px;
-  height: 44px;
-  padding: 0 15px;
-  color: #fff;
-  margin: 0 0 10px;
-
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  &:focus {
-    border-left: 3px solid #f94d6a;
   }
 `;
 

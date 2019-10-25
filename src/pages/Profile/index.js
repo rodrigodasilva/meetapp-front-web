@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
-import { Container, FormUnform, InputUnform, ButtonSubmit } from './styles';
+import { Container, FormUnform, ButtonSubmit } from './styles';
+
+import Input from '~/components/InputStyled';
 
 export default function Profile() {
   const profile = useSelector(state => state.user.profile);
@@ -18,26 +20,18 @@ export default function Profile() {
   return (
     <Container>
       <FormUnform initialData={profile} onSubmit={handleSubmit}>
-        <InputUnform name="name" placeholder="Nome completo" />
-        <InputUnform
-          name="email"
-          type="email"
-          placeholder="Seu endereço de e-mail"
-        />
+        <Input name="name" type="text" placeholder="Nome completo" />
+        <Input name="email" type="email" placeholder="Seu endereço de e-mail" />
 
         <hr />
 
-        <InputUnform
+        <Input
           type="password"
           name="oldPassword"
           placeholder="Sua senha atual"
         />
-        <InputUnform
-          type="password"
-          name="password"
-          placeholder="Sua nova senha"
-        />
-        <InputUnform
+        <Input type="password" name="password" placeholder="Sua nova senha" />
+        <Input
           type="password"
           name="confirmPassword"
           placeholder="Confirme sua nova senha"

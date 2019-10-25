@@ -24,21 +24,9 @@ export const Content = styled.div`
     flex-direction: column;
     margin: 30px 10px;
 
-    & input {
-      background: rgba(0, 0, 0, 0.2);
-      border: 0;
-      border-radius: 4px;
-      height: 50px;
-      padding: 0 20px;
-      color: #fff;
-      margin: 10px 0 0;
-
-      &::placeholder {
-        color: rgba(255, 255, 255, 0.7);
-      }
     }
 
-    /* span error */
+    /* Validation Error Span */
     & span {
       color: #f94d6a;
       align-self: flex-start;

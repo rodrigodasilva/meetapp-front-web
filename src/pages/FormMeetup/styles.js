@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Form } from '@rocketseat/unform';
 import Button from '~/components/Button';
 
+import InputStyled from '~/components/InputStyled';
+
 export const Container = styled.div`
   max-width: 940px;
   margin: 50px auto;
@@ -20,47 +22,32 @@ export const FormUnform = styled(Form)`
   display: flex;
   flex-direction: column;
 
-  & input,
-  & textarea {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.1);
-    border: 0;
-    border-radius: 4px;
-    height: 50px;
-    padding: 0 15px;
-    color: #fff;
-    margin: 10px 0 0px;
-    font-size: 18px;
-
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-    }
-  }
-
-  & textarea {
-    height: 200px;
-    font: 18px 'Roboto', sans-serif;
-    padding: 15px;
-  }
-
-  @media (max-width: 530px) {
-    & input,
-    & textarea {
-      font-size: 16px;
-      height: 44px;
-    }
-
-    & textarea {
-      height: 130px;
-    }
-  }
-
   /* Validation Error Span */
   & span {
     font: 16px 'Roboto', sans-serif;
     color: #f94d6a;
     padding-left: 15px;
     margin: 2px 0 5px;
+  }
+`;
+
+export const Input = styled(InputStyled)`
+  font-size: 18px;
+
+  &.multiline {
+    height: 200px;
+    font: 18px 'Roboto', sans-serif;
+    padding: 15px;
+
+    @media (max-width: 530px) {
+      height: 130px;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 530px) {
+    font-size: 16px;
+    height: 44px;
   }
 `;
 

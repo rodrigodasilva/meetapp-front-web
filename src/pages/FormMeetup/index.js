@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form, Input } from '@rocketseat/unform';
-import { Spinner } from 'react-activity';
 import * as Yup from 'yup';
 
 import BannerInput from '~/components/BannerInput';
@@ -15,7 +13,7 @@ import {
 
 import history from '~/services/history';
 
-import { Container, FormUnform, ButtonSubmit } from './styles';
+import { Container, FormUnform, Input, ButtonSubmit } from './styles';
 
 const schema = Yup.object().shape({
   banner_id: Yup.number().required('Insira uma imagem'),
@@ -61,12 +59,18 @@ function FormMeetup({ match }) {
         <BannerInput name="banner_id" />
 
         <Input name="title" type="text" placeholder="Título do Meetup" />
-        <Input name="description" placeholder="Descrição completa" multiline />
+        <Input
+          name="description"
+          type="text"
+          placeholder="Descrição completa"
+          multiline
+          className="multiline"
+        />
         <DatePickerMeetup name="date" placeholder="Data do meetup" />
         <Input name="location" type="text" placeholder="Localização" />
 
         <ButtonSubmit type="submit" loading={loading}>
-          {meetup ? 'Atualizar' : 'Salvar'} Meetup
+          {meetup ? 'Atualizar' : 'Salvar'}
         </ButtonSubmit>
       </FormUnform>
     </Container>
